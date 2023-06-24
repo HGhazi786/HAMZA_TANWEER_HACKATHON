@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import SearchComponent from "./search";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Navbar() {
       <nav>
         <div className="flex items-center pt-2 justify-between lg:mx-24 xl:mx-24 md:mx-4">
           <div className="text-4xl text-white font-serif font-bold">
-            <Link href={"/"}>LOGO</Link>
+            <Link href={"/"}><Image src="/logo.png" alt="logo" width={60} height={30}/></Link>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif">
@@ -26,7 +27,7 @@ export default function Navbar() {
                 <Link href={"#"}>Home</Link>
               </li>
               <li className="flex-grow ulanime tracking-widest">
-                <Link href={"#"}>About us</Link>
+                <Link href={"/about"}>About us</Link>
               </li>
               <li className="flex-grow ulanime tracking-widest">
                 <Link href={"#"}>Products</Link>
@@ -79,7 +80,7 @@ export default function Navbar() {
                   <Link href={"#"}>Home</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"#"}>About us</Link>
+                  <Link href={"/about"}>About us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
                   <Link href={"#"}>Products</Link>

@@ -1,6 +1,6 @@
 import { PortableTextBlock } from "sanity";
 
-export type Product = {
+export type Product_cards = {
   _id: string;
   createdAt: Date;
   name: string;

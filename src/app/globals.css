@@ -7,30 +7,13 @@
     transition-all duration-500 border-b-2 border-transparent
     hover:border-white
 }
+.hero
+{
+  background-image: url("/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
 .navbg{
-    @apply bg-black bg-opacity-90 sticky top-0 py-4 items-center
+    @apply bg-brown bg-opacity-100 sticky top-0 py-4 items-center z-50;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}

@@ -1,11 +1,11 @@
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
-import { Product } from "../types/product";
+import { Product_cards } from "../types/product";
 import { Page } from "../types/page";
 
-export async function getProducts():Promise<Product[]> {
+export async function getProducts():Promise<Product_cards[]> {
   const lib = await createClient(clientConfig).fetch(
-    groq`*[_type == "project"]{
+    groq`*[_type == "product_cards"]{
     _id,
     _createdAt,
     name,
