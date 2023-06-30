@@ -20,9 +20,24 @@ const product_cards = {
       type: "image",
     },
     {
-        name:"price",
-        title:"Price",
-        type:"string"
+      name: "price",
+      title: "Price",
+      type: "number",
+    },
+    {
+      name: "rating",
+      title: "Rating",
+      type: "number",
+    },
+    {
+      name: "catagory",
+      title: "Catagory",
+      type: "string",
+    },
+    {
+      name: "avaliability",
+      title: "Avaliability",
+      type: "boolean",
     },
     {
       name: "content",

@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Footers() {
   return (
-    <div className="bg-brown text-orange-50 bottom-0">
+    <div className="bg-brown text-orange-50 bottom-0 font-serif">
       <div className="py-5 md:mx-24 lg:mx-24 xl:mx-24 mx-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-x-32 gap-y-8">
         <div className="mt-8">
           <Link href={"/"}>

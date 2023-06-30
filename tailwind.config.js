@@ -7,8 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Old Standard TT"],
+      },
       colors: {
-          brown: "#4C3024",
+        brown: "#4C3024",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

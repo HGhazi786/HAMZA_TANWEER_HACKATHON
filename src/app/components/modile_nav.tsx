@@ -1,6 +1,7 @@
 "use client";
 import { RiMenu3Line } from "react-icons/ri";
 import {RxCross1} from "react-icons/rx"
+import {MdAccountCircle} from "react-icons/md"
 import React, { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
@@ -19,7 +20,9 @@ export default function Navbar() {
       <nav>
         <div className="flex items-center pt-2 justify-between lg:mx-24 xl:mx-24 md:mx-4">
           <div className="text-4xl text-white font-serif font-bold">
-            <Link href={"/"}><Image src="/logo.png" alt="logo" width={60} height={30}/></Link>
+            <Link href={"/"}>
+              <Image src="/logo.png" alt="logo" width={60} height={30} />
+            </Link>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif">
@@ -30,17 +33,19 @@ export default function Navbar() {
                 <Link href={"/about"}>About us</Link>
               </li>
               <li className="flex-grow ulanime tracking-widest">
-                <Link href={"#"}>Products</Link>
+                <Link href={"/products"}>Products</Link>
               </li>
               <li className="flex-grow ulanime tracking-widest">
-                <Link href={"#"}>Contact us</Link>
+                <Link href={"/contact"}>Contact us</Link>
               </li>
             </ul>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif">
-              <li className="flex-grow ulanime tracking-widest">
-                <Link href={"#"}>Account</Link>
+              <li className="flex-grow tracking-widest hover:text-orange-200">
+                <Link href={"/login"} className="text-xl">
+                  <MdAccountCircle />
+                </Link>
               </li>
               <li>
                 <Link href="#" className={`text-lg`}>
@@ -83,13 +88,13 @@ export default function Navbar() {
                   <Link href={"/about"}>About us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"#"}>Products</Link>
+                  <Link href={"/products"}>Products</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"#"}>Contact us</Link>
+                  <Link href={"/contact"}>Contact us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"#"}>Account</Link>
+                  <Link href={"/login"}>Account</Link>
                 </li>
               </ul>
             </nav>

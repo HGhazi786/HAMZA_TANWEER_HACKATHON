@@ -2,15 +2,16 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
+interface img {
+  bg1: string;
+  bg2: string;
+  bg3: string;
+  bg4: string;
+}
 
-const BackgroundSlider = () => {
+const BackgroundSlider = (props:img) => {
   
-  const backgroundImages = [
-    "/hero.jpg",
-    "/hero1.jpg",
-    "/hero2.jpg",
-    // Add more image URLs as needed
-  ];
+  const backgroundImages = [props.bg1,props.bg2,props.bg3,props.bg4]
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

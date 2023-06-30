@@ -12,6 +12,7 @@ export const WipeAnimation = () => {
         height: "%",
         overflow: "hidden",
       }}
+      className="p-4 md:p-9 xl:p-9 lg:p-9"
     >
       <div
         style={{
@@ -29,7 +30,7 @@ export const WipeAnimation = () => {
                 alt="logo"
                 width={1075}
                 height={365}
-                className="rounded-lg"
+                className="rounded-xl shadow-lg shadow-brown"
               />
             </Link>
           </div>
@@ -40,7 +41,7 @@ export const WipeAnimation = () => {
                 alt="logo"
                 width={1075}
                 height={365}
-                className="rounded-lg"
+                className="rounded-xl shadow-lg shadow-brown"
               />
             </Link>
           </div>

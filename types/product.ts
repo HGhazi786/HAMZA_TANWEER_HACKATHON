@@ -7,5 +7,9 @@ export type Product_cards = {
   slug: string;
   image: string;
   url: string;
+  price:number;
+  catagory:string;
+  rating:number;
+  avaliability:boolean;
   content: PortableTextBlock[];
 };

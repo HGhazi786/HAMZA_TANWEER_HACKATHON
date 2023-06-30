@@ -1,6 +1,5 @@
-import React from 'react'
-import Link from 'next/link';
-import {AiFillStar} from 'react-icons/ai'
+import React from 'react';
+import {AiFillStar} from 'react-icons/ai';
 import BackgroundSlider from "./slider";
 
 export default function Hero() {
@@ -9,10 +8,15 @@ export default function Hero() {
       style={{ position: "relative", width: "100%", height: "500px" }}
       className="bg-brown"
     >
-      <BackgroundSlider />
+      <BackgroundSlider
+        bg1="/hero.jpg"
+        bg2="/hero1.jpg"
+        bg3="/hero2.jpg"
+        bg4="/hero.jpg"
+      />
       <div
         style={{ position: "relative", zIndex: 1 }}
-        className="lg:py-28 xl:py-40 md:py-24 px-4 flex flex-col space-y-2 lg:space-y-3 xl:space-y-3 md:space-y-3 items-center justify-center"
+        className="lg:py-28 xl:py-40 text-orange-100 md:py-24 px-4 flex flex-col space-y-2 lg:space-y-3 xl:space-y-3 md:space-y-3 items-center justify-center"
       >
         <p className="text-white text-lg pt-28 lg:pt-1 xl:pt-1 md:pt-1 font-serif text-center">
           Unveiling Delights Beyond Imagination
@@ -25,7 +29,7 @@ export default function Hero() {
           <hr className="lg:w-64 xl:w-64 w-32 h-px bg-white border-0" />
         </div>
         <h1 className="font-extrabold lg:text-7xl xl:text-7xl md:text-7xl text-4xl text-center text-white">
-          The Oven's Secret Bakery
+          The Oven&apos;s Secret Bakery
         </h1>
         <p className="text-white pt-10 text-center">
           Taste the artistry, bite by delectable bite.
