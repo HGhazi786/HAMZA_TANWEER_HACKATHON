@@ -22,7 +22,7 @@ const [selectedCategory, setSelectedCategory] = useState("cakes");
     setSelectedCategory("biscuit");
   };
   return (
-    <main className="bg-orange-200 text-brown text-3xl sticky top-20">
+    <main className="bg-orange-200 text-brown text-3xl sticky top-12">
       <nav>
         <div className="flex items-center pt-2 justify-around lg:mx-24 xl:mx-24 md:mx-4 flex-wrap">
           <div className="lg:block xl:block md:block hidden">
@@ -35,7 +35,7 @@ const [selectedCategory, setSelectedCategory] = useState("cakes");
                   <BiCake />
                 </button>
               </li>
-              <li className="tracking-widest">
+              <li className="">
                 <button
                   className="bg-transperant hover:text-orange-900"
                   onClick={handlecupcake}

@@ -18,11 +18,19 @@ export default function Navbar() {
   return (
     <main className="navbg">
       <nav>
-        <div className="flex items-center pt-2 justify-between lg:mx-24 xl:mx-24 md:mx-4">
-          <div className="text-4xl text-white font-serif font-bold">
+        <div className="flex items-center justify-between mrgn">
+          <div className="font-serif font-bold flex space-x-3">
             <Link href={"/"}>
-              <Image src="/logo.png" alt="logo" width={60} height={30} />
+              <Image
+                src="/logo.png"
+                alt="logo"
+                width={40}
+                height={20}
+              />
             </Link>
+            <div className="text-orange-50 hidden xl:block lg:block md:block xl:text-3xl lg:text-2xl md:text-2xl">
+              TOS
+            </div>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif">

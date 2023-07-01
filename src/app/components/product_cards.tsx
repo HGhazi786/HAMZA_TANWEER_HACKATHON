@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
 import Link from "next/link";
+import { PortableText } from "@portabletext/react";
 
 interface ProductCardProps {
   image: any;
@@ -10,6 +11,7 @@ interface ProductCardProps {
   inStock: any;
   price:any;
   productid:any;
+  btn:any;
 }
 
 const ProductCard = ({
@@ -18,7 +20,8 @@ const ProductCard = ({
   rating,
   inStock,
   price,
-  productid
+  productid,
+  btn
 }:ProductCardProps) => {
   
   const renderStars = () => {
@@ -61,7 +64,7 @@ const ProductCard = ({
       </div>
       <div className="px-6 py-4">
         <Link
-          href={`/products/[productid]" as="/products/1"`}
+          href={btn}
           className="bg-brown hover:bg-orange-900 text-orange-50 font-bold py-2 px-4 rounded-lg"
         >
           Buy Now

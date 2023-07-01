@@ -1,5 +1,3 @@
-import { PortableTextBlock } from "sanity";
-
 export type Product_cards = {
   _id: string;
   createdAt: Date;
@@ -11,5 +9,5 @@ export type Product_cards = {
   catagory:string;
   rating:number;
   avaliability:boolean;
-  content: PortableTextBlock[];
+  content: string;
 };

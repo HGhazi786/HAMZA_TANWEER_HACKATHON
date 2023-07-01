@@ -41,9 +41,8 @@ const product_cards = {
     },
     {
       name: "content",
-      title: "Content",
-      type: "array",
-      of: [{ type: "block" }],
+      title: "Description",
+      type: "string",
     },
   ],
 };
