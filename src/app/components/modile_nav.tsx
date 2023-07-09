@@ -7,8 +7,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import Link from "next/link";
 import SearchComponent from "./search";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export default function Navbar() {
+   const cartValue = useSelector(
+     (state: RootState) => state.cart.totalQuantity
+   );
   const [isOpen, setIsOpen] = useState(false);
 
   const handleMenuClick = () => {
@@ -21,21 +26,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between mrgn">
           <div className="font-serif font-bold flex space-x-3">
             <Link href={"/"}>
-              <Image
-                src="/logo.png"
-                alt="logo"
-                width={40}
-                height={20}
-              />
+              <Image src="/logo.png" alt="logo" width={40} height={20} />
             </Link>
-            <div className="text-orange-50 hidden xl:block lg:block md:block xl:text-3xl lg:text-2xl md:text-2xl">
-              TOS
-            </div>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif">
               <li className="flex-grow ulanime tracking-widest">
-                <Link href={"#"}>Home</Link>
+                <Link href={"/"}>Home</Link>
               </li>
               <li className="flex-grow ulanime tracking-widest">
                 <Link href={"/about"}>About us</Link>
@@ -49,9 +46,9 @@ export default function Navbar() {
             </ul>
           </div>
           <div className="lg:block xl:block md:block hidden">
-            <ul className="flex space-x-8 font-medium text-white font-serif">
+            <ul className="flex space-x-8 font-medium text-white font-serif justify-center items-center">
               <li className="flex-grow tracking-widest hover:text-orange-200">
-                <Link href={"/login"} className="text-xl">
+                <Link href={"/SignIn"} className="text-2xl">
                   <MdAccountCircle />
                 </Link>
               </li>
@@ -61,8 +58,14 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className={`text-lg`}>
-                  <FaShoppingCart />
+                <Link
+                  href="/cart"
+                  className={`h-8 w-8 rounded-full flex justify-center items-center relative`}
+                >
+                  <span className="flex absolute right-1 top-0 rounded-full bg-red-500 h-3 w-3 justify-center items-center text-white text-xs text-center">
+                    {cartValue}
+                  </span>
+                  <FaShoppingCart className="text-lg"/>
                 </Link>
               </li>
             </ul>
@@ -90,7 +93,7 @@ export default function Navbar() {
             <nav>
               <ul className="flex-cols font-medium text-white font-serif mt-2">
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"#"}>Home</Link>
+                  <Link href={"/"}>Home</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
                   <Link href={"/about"}>About us</Link>

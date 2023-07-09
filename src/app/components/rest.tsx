@@ -14,7 +14,7 @@ export default function Front_page() {
       <div className="grid md:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 md:py-10 lg:py-10 xl:py-10 gap-y-4 xl:gap-x-10 md:gap-x-10 lg:gap-x-10 lg:mx-24 xl:mx-24 md:mx-16 mx-4">
         <div className="">
           <h1 className="text-4xl text-brown font-serif font-semibold tracking-normal lg:mt-36 xl:mt-36 md:mt-36 mt-6">
-            <TextAnimation text="Our Products" />
+            Our Products
           </h1>
           <p className="font-serif text-lg font-extralight mt-8 text-justify">
             Indulge in our bakery&apos;s irresistible treats, from fluffy bread
@@ -35,8 +35,29 @@ export default function Front_page() {
             </Link>
           </div>
         </div>
-        <div>
-          <WipeAnimation />
+        <div className="space-y-5">
+          <div className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+            <Link href={"/"}>
+              <Image
+                src="/banner.jpg"
+                alt="logo"
+                width={1075}
+                height={365}
+                className="rounded-xl shadow-lg shadow-brown"
+              />
+            </Link>
+          </div>
+          <div className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+            <Link href={"/"}>
+              <Image
+                src="/banner2.jpg"
+                alt="logo"
+                width={1075}
+                height={365}
+                className="rounded-xl shadow-lg shadow-brown"
+              />
+            </Link>
+          </div>
         </div>
       </div>
       <div className="flex py-16 items-center justify-center bg-brown mt-10">
@@ -96,7 +117,7 @@ export default function Front_page() {
               button="Buy Now"
             />
             <S_cards
-              name="Chocolate Hazelnut cupcake"
+              name="Chocolate Hazelnut"
               price="$50"
               ratings={5}
               picture="/sp4.jpg"

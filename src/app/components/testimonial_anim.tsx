@@ -62,10 +62,10 @@ const testimonials = [
 
 const AnimatedTestimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [numCards, setNumCards] = useState(1); // Number of cards to show based on screen size
+  const [numCards, setNumCards] = useState(0); // Number of cards to show based on screen size
 
   const handleResize = () => {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1920) {
       setNumCards(3);
     } else {
       setNumCards(1);
@@ -135,7 +135,7 @@ const AnimatedTestimonials = () => {
         <AiOutlineArrowRight />
       </button>
       <div className="relative">
-        <div className="flex -mx-4">{renderedTestimonials}</div>
+        <div className="flex mx-4">{renderedTestimonials}</div>
       </div>
     </div>
   );

@@ -11,3 +11,14 @@ export type Product_cards = {
   avaliability:boolean;
   content: string;
 };
+export interface prod_data {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  totalPrice: number;
+}
+
+export interface CartItem {
+  product: prod_data;
+}

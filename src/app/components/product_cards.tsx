@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
 import Link from "next/link";
-import { PortableText } from "@portabletext/react";
 
 interface ProductCardProps {
   image: any;

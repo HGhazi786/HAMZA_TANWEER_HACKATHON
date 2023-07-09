@@ -1,62 +1,47 @@
-"use client";
-import { BiCake, BiDoughnutChart } from "react-icons/bi";
-import { GiCupcake, GiSlicedBread,GiChocolateBar } from "react-icons/gi";
-import React, { useState } from "react";
-
 export default function Catbar() {
-const [selectedCategory, setSelectedCategory] = useState("cakes");
+// const [selectedCategory, setSelectedCategory] = useState("cakes");
 
   const handleCake = () => {
-    setSelectedCategory("cake");
+    // setSelectedCategory("cake");
   };
   const handlecupcake = () => {
-    setSelectedCategory("cupcake");
+    // setSelectedCategory("cupcake");
   };
   const handlebread = () => {
-    setSelectedCategory("bread");
+    // setSelectedCategory("bread");
   };
   const handledoughnut = () => {
-    setSelectedCategory("doughnut");
+    // setSelectedCategory("doughnut");
   };
   const handlebiscuit = () => {
-    setSelectedCategory("biscuit");
+    // setSelectedCategory("biscuit");
   };
   return (
     <main className="bg-orange-200 text-brown text-3xl sticky top-12">
       <nav>
         <div className="flex items-center pt-2 justify-around lg:mx-24 xl:mx-24 md:mx-4 flex-wrap">
-          <div className="lg:block xl:block md:block hidden">
-            <ul className="flex lg:space-x-24 xl:space-x-36 space-x-6 md:space-x-16 font-medium font-serif">
-              <li className="flex-grow ulanime tracking-widest">
-                <button
-                  className="bg-transperant hover:text-orange-900"
-                  onClick={handleCake}
-                >
-                  <BiCake />
-                </button>
-              </li>
+          <div className="">
+            <ul className="flex items-center lg:space-x-24 xl:space-x-36 space-x-6 md:space-x-16 font-serif bg-transperant hover:text-orange-900 text-lg font-bold">
               <li className="">
-                <button
-                  className="bg-transperant hover:text-orange-900"
-                  onClick={handlecupcake}
-                >
-                  <GiCupcake />
+                <button className="" onClick={handleCake}>
+                  CAKES
                 </button>
               </li>
-              <li className="flex-grow ulanime tracking-widest">
+              <li>
+                <button onClick={handlecupcake}>CUP-CAKES</button>
+              </li>
+              <li>
                 <button
-                  className="bg-transperant hover:text-orange-900"
                   onClick={handlebread}
                 >
-                  <GiSlicedBread />
+                  BREAD
                 </button>
               </li>
-              <li className="flex-grow ulanime tracking-widest">
+              <li>
                 <button
-                  className="bg-transperant hover:text-orange-900"
                   onClick={handlebiscuit}
                 >
-                  <GiChocolateBar />
+                  BISCUITS
                 </button>
               </li>
               <li className="flex-grow ulanime tracking-widest">
@@ -64,7 +49,7 @@ const [selectedCategory, setSelectedCategory] = useState("cakes");
                   className="bg-transperant hover:text-orange-900"
                   onClick={handledoughnut}
                 >
-                  <BiDoughnutChart />
+                  DOUGHNUTS
                 </button>
               </li>
             </ul>

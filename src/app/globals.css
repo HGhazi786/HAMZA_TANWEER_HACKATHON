@@ -9,11 +9,12 @@
     transition-all duration-500 border-b-2 border-transparent
     hover:border-white
 }
-.hero
+.bgr
 {
-  background-image: url("/hero.jpg");
+  background-image: url("/bg.jpg");
   background-size: cover;
   background-position: center;
+  backdrop-filter:blur(5px);
 }
 .mrgn
 {
