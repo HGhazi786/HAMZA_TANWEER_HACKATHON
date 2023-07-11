@@ -25,7 +25,7 @@ export default function S_cards(props: s_props) {
     return stars;
   };
   return (
-    <div className="my-5 p-4 text-brown font-serif border-r-2 border-r-brown shadow-2xl shadow-brown/30 border border-b-2 border-transparent border-b-brown">
+    <div className="my-5 p-4 text-brown font-roboto border-r-2 border-r-brown shadow-2xl shadow-brown/30 border border-b-2 border-transparent border-b-brown">
       <div className="flex items-center flex-wrap">
         <Image
           src={props.picture}
@@ -35,11 +35,11 @@ export default function S_cards(props: s_props) {
           className="rounded-xl mr-8"
         />
         <div className="">
-          <h2 className="text-3xl font-normal b-4">{props.name}</h2>
+          <h2 className="text-4xl font-semibold b-4 font-festive">{props.name}</h2>
           <h2 className="text-lg font-normal mb-4">{props.price}</h2>
           <Link
             href="#"
-            className="bg-brown hover:bg-orange-900 mb-4 text-orange-50 px-4 py-2 font-semibold rounded-xl"
+            className="bg-brown hover:bg-orange-900 mb-4 text-orange-50 px-4 py-2 rounded-xl"
           >
             {props.button}
           </Link>

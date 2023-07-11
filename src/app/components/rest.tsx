@@ -13,10 +13,10 @@ export default function Front_page() {
     <div className="bg-orange-100">
       <div className="grid md:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 md:py-10 lg:py-10 xl:py-10 gap-y-4 xl:gap-x-10 md:gap-x-10 lg:gap-x-10 lg:mx-24 xl:mx-24 md:mx-16 mx-4">
         <div className="">
-          <h1 className="text-4xl text-brown font-serif font-semibold tracking-normal lg:mt-36 xl:mt-36 md:mt-36 mt-6">
-            Our Products
+          <h1 className="text-6xl text-orange-900 font-festive font-extrabold tracking-wider lg:mt-36 xl:mt-36 md:mt-36 mt-6">
+            <span className="text-orange-950">Our</span> Products
           </h1>
-          <p className="font-serif text-lg font-extralight mt-8 text-justify">
+          <p className="text-lg font-thin font-roboto mt-8 text-justify">
             Indulge in our bakery&apos;s irresistible treats, from fluffy bread
             and buttery croissants to luscious pies and velvety cakes. Crafted
             with passion and using the finest ingredients, each bite is a moment
@@ -27,8 +27,8 @@ export default function Front_page() {
           </p>
           <div className="pt-8">
             <Link
-              href="#"
-              className={`text-lg bg-brown text-white px-4 py-2 rounded-lg shadow-2xl hover:bg-orange-900 shadow-brown`}
+              href="/products"
+              className={`text-lg font-roboto tracking-wide font-thin bg-brown text-white px-4 py-2 rounded-lg shadow-2xl hover:bg-orange-900 shadow-brown`}
             >
               <FaShoppingCart className="inline-block mr-2" />
               <span>Start Shopping</span>
@@ -61,38 +61,43 @@ export default function Front_page() {
         </div>
       </div>
       <div className="flex py-16 items-center justify-center bg-brown mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-8 font-festive">
           <Catagory
             title="Cake"
-            description="Heavenly perfection, our cakes are pure indulgence"
+            description="Heavenly perfection,cakes are pure indulgence"
             img="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80"
+            url="/products/cake"
           />
           <Catagory
             title="Cup Cake"
             description="Delightful mini treats, our cupcakes are pure bliss"
             img="https://images.unsplash.com/photo-1564747519847-6414d97fc3b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+            url="/products/cupcake"
           />
           <Catagory
             title="Bread"
             description="Wholesome artisan bread, baked to perfection"
             img="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80"
+            url="/products/bread"
           />
           <Catagory
             title="Biscuits"
             description="Buttery perfection in every bite, that melt in your mouth"
             img="https://images.unsplash.com/photo-1528591922185-a0eb2f8f50b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+            url="/products/biscuit"
           />
           <Catagory
             title="Doughnuts"
-            description="Irresistibly fried bliss, our doughnuts are pure delight"
+            description="Irresistibly fried bliss,doughnuts are pure delight"
             img="https://images.unsplash.com/photo-1527904324834-3bda86da6771?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1104&q=80"
+            url="/products/doughnut"
           />
         </div>
       </div>
       <div className="bg-orange-100">
         <div className="py-10">
-          <h1 className="font-serif font-semibold tracking-normal text-4xl text-brown lg:mx-24 md:mx-10 xl:mx-24 mx-4 text-center">
-            Our Specialities
+          <h1 className="font-festive font-semibold tracking-wider text-6xl text-orange-800 lg:mx-24 md:mx-10 xl:mx-24 mx-4 text-center">
+            <span className="text-brown">Our</span> Specialities
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-20 gap-y-2 lg:mx-24 xl:mx-24 md:mx-16 mx-4">
             <S_cards
@@ -153,10 +158,10 @@ export default function Front_page() {
             ></video>
           </div>
           <div>
-            <h1 className="text-4xl text-brown font-serif font-semibold tracking-normal mt-6">
-              <TextAnimation text="Our Services" />
+            <h1 className="text-6xl text-brown font-festive font-bold tracking-wider mt-6">
+              Our <span className="text-orange-900">Services</span>
             </h1>
-            <p className="font-serif text-lg font-extralight mt-8 text-justify">
+            <p className="font-roboto text-lg font-extralight mt-8 text-justify tracking-tight">
               We pride ourselves on providing an array of exceptional services
               that cater to all your baking needs. From custom cake designs that
               perfectly capture your vision to a wide selection of delectable
@@ -171,7 +176,7 @@ export default function Front_page() {
           </div>
         </div>
         <div className="py-10 lg:mx-24 md:mx-10 xl:mx-24 mx-4">
-          <h1 className="font-serif font-semibold tracking-normal text-4xl text-brown text-center md:text-center lg:text-left xl:text-left">
+          <h1 className="font-festive font-bold tracking-wider text-6xl text-brown text-center md:text-center lg:text-left xl:text-left">
             Testimonials
           </h1>
           <AnimatedTestimonials />

@@ -16,9 +16,9 @@ export default function Hero() {
       />
       <div
         style={{ position: "relative", zIndex: 1 }}
-        className="lg:py-28 xl:py-40 text-orange-100 md:py-24 px-4 flex flex-col space-y-2 lg:space-y-3 xl:space-y-3 md:space-y-3 items-center justify-center"
+        className="lg:py-28 font-roboto xl:py-40 text-orange-100 md:py-24 px-4 flex flex-col space-y-2 lg:space-y-3 xl:space-y-3 md:space-y-3 items-center justify-center"
       >
-        <p className="text-white text-lg pt-28 lg:pt-1 xl:pt-1 md:pt-1 font-serif text-center">
+        <p className="text-white text-lg pt-28 lg:pt-1 xl:pt-1 md:pt-1 font-roboto text-center">
           Unveiling Delights Beyond Imagination
         </p>
         <div className="inline-flex items-center justify-center w-full">
@@ -28,7 +28,7 @@ export default function Hero() {
           </span>
           <hr className="lg:w-64 xl:w-64 w-32 h-px bg-white border-0" />
         </div>
-        <h1 className="font-extrabold lg:text-7xl xl:text-7xl md:text-7xl text-4xl text-center text-white">
+        <h1 className="font-extrabold font-serif lg:text-7xl xl:text-7xl md:text-7xl text-4xl text-center text-white">
           The Oven&apos;s Secret Bakery
         </h1>
         <p className="text-white pt-10 text-center">

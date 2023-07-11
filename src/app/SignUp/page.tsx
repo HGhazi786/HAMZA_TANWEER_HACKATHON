@@ -7,7 +7,6 @@ export default function Page() {
         path="/SignUp"
         routing="path"
         signInUrl="/SignIn"
-        redirectUrl={"/"}
       />
     </div>
   );

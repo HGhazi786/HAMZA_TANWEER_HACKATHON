@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Old Standard TT"],
+        festive: ["Style Script"],
+        roboto: ["Poppins"],
+        great: ["Great Vibes"],
       },
       colors: {
         brown: "#4C3024",

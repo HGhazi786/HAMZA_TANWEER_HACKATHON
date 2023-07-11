@@ -31,7 +31,7 @@ const TestimonialCard = ({
   };
 
   return (
-    <div className="bg-orange-50 h-full shadow-lg shadow-brown/30 my-5 rounded-xl p-4 flex flex-col justify-between text-brown">
+    <div className="bg-orange-50 h-full shadow-lg shadow-brown/30 font-great my-5 rounded-xl p-4 flex flex-col justify-between text-brown">
       <div className="flex items-center mb-4">
         <Image
           src={picture}
@@ -41,11 +41,11 @@ const TestimonialCard = ({
           className="w-12 h-12 rounded-full mr-4"
         />
         <div>
-          <h2 className="text-lg font-bold">{name}</h2>
-          <p className="text-gray-600">{event}</p>
+          <h2 className="text-3xl font-extrabold">{name}</h2>
+          <p className="text-orange-800 text-xl">{event}</p>
         </div>
       </div>
-      <p className="text-gray-800 mb-4">{comment}</p>
+      <p className="text-orange-900 mb-4 text-lg font-light tracking-tight font-roboto">{comment}</p>
       <div className="flex items-center">
         <div className="flex mr-2">{renderStars()}</div>
       </div>

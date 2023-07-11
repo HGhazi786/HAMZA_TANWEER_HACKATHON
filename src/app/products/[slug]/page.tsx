@@ -1,14 +1,19 @@
 import React from "react";
-import ProductCard from "../components/product_cards";
-import { getProducts } from "../../../sanity/sanity-utils";
-import BackgroundSlider from "../components/slider";
+import ProductCard from "../../components/product_cards";
+import { getProducts } from "../../../../sanity/sanity-utils";
+import BackgroundSlider from "../../components/slider";
 
 export default async function Page({ params }: { params: { slug: string } }) {
+  const catagory = params.slug;
   const projects = await getProducts();
+
+  const filteredProjects = projects.filter(
+    (project) => project.catagory === catagory
+  );
 
   return (
     <div className="bg-orange-100 font-serif">
-      <title>Our Products</title>
+      <title>{catagory?.toUpperCase()}</title>
       <div
         style={{ position: "relative", width: "100%", height: "350px" }}
         className="bg-brown"
@@ -33,7 +38,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </div>
       <div>
         <div className="mrgn py-20 grid lg:grid-cols-4 md:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-5">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <ProductCard
               key={project.name}
               name={project.name}

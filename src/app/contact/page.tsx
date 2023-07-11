@@ -1,7 +1,10 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react'
 import BackgroundSlider from '../components/slider';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-export default function Page() {
+export default async function Page() {
+  
   return (
     <div>
       <div

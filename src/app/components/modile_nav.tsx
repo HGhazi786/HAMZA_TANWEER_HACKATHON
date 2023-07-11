@@ -9,6 +9,15 @@ import SearchComponent from "./search";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton
+} from "@clerk/nextjs";
+import DropdownMenu from "./dropdown";
+
 
 export default function Navbar() {
    const cartValue = useSelector(
@@ -21,36 +30,54 @@ export default function Navbar() {
   };
 
   return (
-    <main className="navbg">
+    <main className="navbg font-roboto text-orange-50">
       <nav>
         <div className="flex items-center justify-between mrgn">
-          <div className="font-serif font-bold flex space-x-3">
+          <div className=" flex space-x-3">
             <Link href={"/"}>
               <Image src="/logo.png" alt="logo" width={40} height={20} />
             </Link>
           </div>
+          <div className="lg:hidden xl:hidden md:hidden block">
+            <Link
+              href="/cart"
+              className={`h-8 w-8 rounded-full flex justify-center items-center relative`}
+            >
+              <span className="flex absolute right-1 top-0 rounded-full bg-red-500 h-3 w-3 justify-center items-center text-white text-xs text-center">
+                {cartValue}
+              </span>
+              <FaShoppingCart className="text-lg text-orange-50" />
+            </Link>
+          </div>
           <div className="lg:block xl:block md:block hidden">
-            <ul className="flex space-x-8 font-medium text-white font-serif">
-              <li className="flex-grow ulanime tracking-widest">
+            <ul className="flex space-x-8 font-normal -tracking-tighter">
+              <li className="flex-grow ulanime tracking-wide">
                 <Link href={"/"}>Home</Link>
               </li>
-              <li className="flex-grow ulanime tracking-widest">
+              <li className="flex-grow ulanime">
                 <Link href={"/about"}>About us</Link>
               </li>
-              <li className="flex-grow ulanime tracking-widest">
-                <Link href={"/products"}>Products</Link>
+              <li className="flex-grow ulanime">
+                <DropdownMenu />
               </li>
-              <li className="flex-grow ulanime tracking-widest">
+              <li className="flex-grow ulanime">
                 <Link href={"/contact"}>Contact us</Link>
               </li>
             </ul>
           </div>
           <div className="lg:block xl:block md:block hidden">
             <ul className="flex space-x-8 font-medium text-white font-serif justify-center items-center">
-              <li className="flex-grow tracking-widest hover:text-orange-200">
-                <Link href={"/SignIn"} className="text-2xl">
-                  <MdAccountCircle />
-                </Link>
+              <li className="flex-grow tracking-wide hover:text-orange-200">
+                <SignedIn>
+                  {/* Mount the UserButton component */}
+                  <UserButton afterSignOutUrl="/" />
+                </SignedIn>
+                <SignedOut>
+                  {/* Signed out users get sign in button */}
+                  <Link href={"https://alert-viper-80.accounts.dev/sign-in"}>
+                    <MdAccountCircle className="text-xl" />
+                  </Link>
+                </SignedOut>
               </li>
               <li>
                 <Link href="#" className={`text-lg`}>
@@ -65,7 +92,7 @@ export default function Navbar() {
                   <span className="flex absolute right-1 top-0 rounded-full bg-red-500 h-3 w-3 justify-center items-center text-white text-xs text-center">
                     {cartValue}
                   </span>
-                  <FaShoppingCart className="text-lg"/>
+                  <FaShoppingCart className="text-lg" />
                 </Link>
               </li>
             </ul>
@@ -99,13 +126,13 @@ export default function Navbar() {
                   <Link href={"/about"}>About us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"/products"}>Products</Link>
+                  <DropdownMenu />
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
                   <Link href={"/contact"}>Contact us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <Link href={"/login"}>Account</Link>
+                  <Link href={"/SignIn"}>Account</Link>
                 </li>
               </ul>
             </nav>
