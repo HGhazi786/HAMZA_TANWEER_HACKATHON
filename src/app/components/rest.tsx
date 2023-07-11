@@ -3,7 +3,6 @@ import Link from "next/link";
 import AnimatedTestimonials from "./testimonial_anim";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
-import { WipeAnimation, TextAnimation } from "./animations";
 import Catagory from "./catagory";
 import S_cards from "./special_cards";
 import BackgroundSlider from "./slider";
