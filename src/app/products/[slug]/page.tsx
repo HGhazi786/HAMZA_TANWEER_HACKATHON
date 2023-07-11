@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
               inStock={project.avaliability}
               price={project.price}
               productid={project._id}
-              btn={`/products/product-details?id=${project._id}`}
+              btn={`/products/productDetail/${project._id}`}
             />
           ))}
         </div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -13,10 +14,12 @@ export default function Catagory(props:catagoryProp) {
     
         <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black">
           <div className="h-72 w-60">
-            <img
+            <Image
               className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
               src={props.img}
               alt=""
+              width={240}
+              height={288}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brown group-hover:from-brown/70 group-hover:via-brown/60 group-hover:to-brown/70"></div>

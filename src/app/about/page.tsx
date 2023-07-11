@@ -138,25 +138,25 @@ export default function About() {
         </h1>
         <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-4 grid-cols-1 xl:grid-cols-4 lg:mx-24 xl:mx-24 md:mx-24 mx-4 py-5">
           <ProfileCard
-            picture="https://1.bp.blogspot.com/-Vy-wbp5eQIk/V_TzfnZhqLI/AAAAAAAACj0/-lQ4zYQ2kCIS5YfSKX1Xt3yCeQyV-x0egCLcB/w1200-h630-p-k-no-nu/backery-business.jpg"
+            picture="/w1.jpg"
             name="Emily Rodriguez"
             designation="Head Pastry Chef"
             description="With years of experience and a creative flair, Emily is the mastermind behind our bakery&apos;s exquisite pastries. Her innovative approach and attention to detail ensure that each creation is a work of art"
           />
           <ProfileCard
-            picture="https://plus.unsplash.com/premium_photo-1661956269640-49e3b78f2a87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            picture="/m1.jpg"
             name=" Thomas Gallagher"
             designation="Artisan Bread Specialist"
             description="Thomass passion lies in the art of bread-making. As our artisan bread specialist, he expertly crafts a wide variety of bread, from crusty sourdough to flavorful whole grain loaves, using traditional techniques and carefully selected ingredients"
           />
           <ProfileCard
-            picture="https://1.bp.blogspot.com/-G_HAiIMOY2w/XtL9krbgdrI/AAAAAAAACrU/7hc2xEU1ruUr4UXLkanMcEDkoOlfBLtRgCLcBGAsYHQ/s1600/Cooking%2Bclasses.jpg"
+            picture="/w2.jpg"
             name="Olivia Martinez"
             designation="Cake Decorating Guru"
             description="Olivia&apos;s expertise lies in transforming cakes into edible masterpieces. With her artistic skills and meticulous attention to design, she brings joy and wonder to every celebration with her beautifully decorated cakes"
           />
           <ProfileCard
-            picture="https://th.bing.com/th/id/OIP.EQkbftyZ1x4jPeWm_LXVogHaE7?pid=ImgDet&rs=1"
+            picture="/w4.jpg"
             name="Micheal Thomson"
             designation="Executive Chef"
             description="As the executive chef, Michael oversees the entire culinary operation of our bakery. With a wealth of experience and a deep understanding of flavors, he ensures that every product reflects the highest standards of taste, quality, and innovation"

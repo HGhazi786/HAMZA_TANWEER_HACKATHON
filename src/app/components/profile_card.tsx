@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface ProfileCardProps {
@@ -10,10 +11,12 @@ interface ProfileCardProps {
 const ProfileCard = (props: ProfileCardProps) => {
   return (
     <div className="bg-orange-50  shadow-2xl shadow-brown rounded-xl flex flex-col items-center">
-      <img
+      <Image
         src={props.picture}
         alt="Profile Picture"
         className="w-full h-60 mb-4"
+        width={800}
+        height={900}
       />
       <h2 className="text-xl font-bold mb-2">{props.name}</h2>
       <p className="text-gray-600 mb-2">{props.designation}</p>

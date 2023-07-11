@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import {useSearchParams } from "next/navigation";
 import { AiFillStar} from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { getProducts } from "../../../../sanity/sanity-utils";
+import { getProducts } from "../../../../../sanity/sanity-utils";
 import { cartActions } from "@/store/features/cartslice";
 
 interface prod_data {
@@ -54,29 +53,26 @@ return (
     );
 };
 
-const ProductDetailsPage = async() => {
-  const [qty,setQuantity]=useState(1)
-  const router = useSearchParams();
-  const id = router.get("id");
+const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
+  const [qty, setQuantity] = useState(1);
+  const id = params.id
   const projects = await getProducts();
-  const filteredProjects = projects.filter(
-    (project) => project._id === id
-  );
-  const project=filteredProjects[0]
+  const filteredProjects = projects.filter((project) => project._id === id);
+  const project = filteredProjects[0];
   const description = project.content;
   const name = project.name;
   const price = project.price;
   const rating = project.rating;
   const image = project.image;
-  const inStock=project.avaliability;
-  
-const product: prod_data = {
-  _id:String(id) ,
-  name: name,
-  image: image,
-  price: price,
-  quantity:qty,
-};
+  const inStock = project.avaliability;
+
+  const product: prod_data = {
+    _id: String(id),
+    name: name,
+    image: image,
+    price: price,
+    quantity: qty,
+  };
 
   const renderStars = () => {
     const stars = [];
@@ -105,19 +101,18 @@ const product: prod_data = {
           <h2 className="text-5xl font-semibold">{name}</h2>
           <p className="text-lg">{description}</p>
           <div className="flex mr-2 mt-5">{renderStars()}</div>
-          <div>
-          </div>
+          <div></div>
           {inStock ? (
-          <span className="inline-block bg-green-500 text-white text-sm px-2 py-1 rounded-full">
-            #instock
-          </span>
-        ) : (
-          <span className="inline-block bg-red-500 text-white text-sm px-2 py-1 rounded-full">
-            #Out of stock
-          </span>
-        )}
+            <span className="inline-block bg-green-500 text-white text-sm px-2 py-1 rounded-full">
+              #instock
+            </span>
+          ) : (
+            <span className="inline-block bg-red-500 text-white text-sm px-2 py-1 rounded-full">
+              #Out of stock
+            </span>
+          )}
           <div className="font-semibold text-xl mt-2">$ {price}</div>
-          <AddToCartBtn product={product}/>
+          <AddToCartBtn product={product} />
         </div>
       </div>
     </div>
