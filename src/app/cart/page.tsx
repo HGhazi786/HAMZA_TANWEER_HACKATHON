@@ -69,7 +69,7 @@ export default function CartPage() {
               </p>
               <button
                 onClick={() => {
-                  dispatch(cartActions.removeFromCart(item._id));
+                  dispatch(cartActions.removeProduct(item._id));
                 }}
               >
                 <FaTrash className="text-brown hover:text-orange-900 text-xl" />

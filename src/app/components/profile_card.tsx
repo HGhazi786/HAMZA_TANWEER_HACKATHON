@@ -10,7 +10,7 @@ interface ProfileCardProps {
 
 const ProfileCard = (props: ProfileCardProps) => {
   return (
-    <div className="bg-orange-50  shadow-2xl shadow-brown rounded-xl flex flex-col items-center">
+    <div className="bg-orange-50 font-roboto shadow-2xl shadow-brown rounded-xl flex flex-col items-center">
       <Image
         src={props.picture}
         alt="Profile Picture"
@@ -18,9 +18,9 @@ const ProfileCard = (props: ProfileCardProps) => {
         width={800}
         height={900}
       />
-      <h2 className="text-xl font-bold mb-2">{props.name}</h2>
-      <p className="text-gray-600 mb-2">{props.designation}</p>
-      <p className="text-gray-800 p-4">{props.description}</p>
+      <h2 className="text-3xl font-bold mb-2 font-great text-brown">{props.name}</h2>
+      <p className="text-orange-800 mb-2">{props.designation}</p>
+      <p className="text-brown p-4">{props.description}</p>
     </div>
   );
 };

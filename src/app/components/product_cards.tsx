@@ -36,7 +36,7 @@ const ProductCard = ({
   };
 
   return (
-    <div className="max-w-xs bg-orange-50 mx-auto rounded-lg overflow-hidden hover:translate-z-10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-brown font-serif">
+    <div className="max-w-xs bg-orange-50 mx-auto rounded-lg text-brown overflow-hidden hover:translate-z-10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-brown font-roboto">
       <Image
         className="w-full"
         src={image}
@@ -45,7 +45,7 @@ const ProductCard = ({
         height={270}
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{name}</div>
+        <h1 className="text-4xl tracking-wide font-bold mb-2 font-festive">{name}</h1>
         <div className="font-semibold text-lg mb-2">
           {price}
           <span>$</span>

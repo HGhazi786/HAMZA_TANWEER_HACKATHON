@@ -42,7 +42,7 @@ const AddToCartBtn = (props: Props) => {
 return (
         <button
             onClick={clickhandle}
-            className={`text-lg bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-200 text-brown w-40 h-12`}
+            className={`text-lg bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-200 text-brown w-60 h-12`}
           >
             <FaShoppingCart className="inline-block mr-2" />
             <span>Add to Cart</span>
@@ -95,8 +95,8 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
           height={800}
           className="object-cover w-full h-full"
         />
-        <div className="space-y-5 py-10 px-2">
-          <h2 className="text-5xl font-semibold">{name}</h2>
+        <div className="space-y-5 py-10 px-2 font-roboto">
+          <h1 className="text-5xl font-semibold font-festive">{name}</h1>
           <p className="text-lg">{description}</p>
           <div className="flex mr-2 mt-5">{renderStars()}</div>
           <div></div>

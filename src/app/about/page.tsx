@@ -22,23 +22,24 @@ export default function About() {
           <h1 className="font-extrabold lg:text-7xl xl:text-7xl md:text-7xl text-4xl text-center text-white">
             Taste of Pure Joy
           </h1>
-          <p className="md:mx-44 lg:mx-72 xl:mx-96 mx-4 text-center text-lg text-white">
+          <p className="md:mx-44 lg:mx-72 font-roboto xl:mx-96 mx-4 text-center text-lg text-orange-50">
             At our bakery, our mission is to create moments of pure joy and
             delight through exceptional baked goods. We strive to exceed
             expectations by delivering unique flavors and exquisite
             craftsmanship in every bite. With passion and creativity, we aim to
-            brighten people&apos;s lives and be a beloved destination synonymous with
-            indulgence and happiness. By fostering connections and spreading
-            warmth, we envision becoming a cherished part of our customers&apos;
-            special moments and everyday lives, one delicious treat at a time.
+            brighten people&apos;s lives and be a beloved destination synonymous
+            with indulgence and happiness. By fostering connections and
+            spreading warmth, we envision becoming a cherished part of our
+            customers&apos; special moments and everyday lives, one delicious
+            treat at a time.
           </p>
         </div>
       </div>
-      <div className="lg:mx-24 xl:mx-24 md:mx-24 mx-4 text-lg">
+      <div className="lg:mx-24 xl:mx-24 md:mx-24 mx-4 text-lg font-roboto">
         <div className="text-brown grid py-10 grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-10 gap-y-5">
           <div>
-            <h1 className="font-serif font-semibold tracking-normal text-4xl mb-5">
-              A Legacy Baked with Love
+            <h1 className="font-festive font-semibold tracking-normal text-6xl mb-5">
+              Legacy <span className='text-orange-900'>Baked with Love</span>
             </h1>
             <p>
               Our bakery has a rich history steeped in a passion for baking that
@@ -71,8 +72,8 @@ export default function About() {
             className="rounded-xl shadow-2xl shadow-brown"
           />
           <div>
-            <h1 className="font-serif font-semibold tracking-normal text-4xl mb-5">
-              Nurturing Communities with Care
+            <h1 className="font-festive font-semibold tracking-normal text-6xl mb-5">
+              Nurturing <span className='text-orange-900'>Communities</span> with Care
             </h1>
             <p className="">
               In our journey as a bakery, we recognize the importance of giving
@@ -88,8 +89,8 @@ export default function About() {
           </div>
         </div>
         <div className="text-brown py-10 mb-5">
-          <h1 className="text-center mb-5 font-serif font-semibold tracking-normal text-4xl">
-            Awards and Recognitions
+          <h1 className="text-center mb-5 font-festive font-bold tracking-wider text-6xl">
+            <span className='text-orange-900'>Awards</span> and Recognitions
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-5">
             <Image src="/a1.png" alt="img" width={200} height={200} />
@@ -114,10 +115,10 @@ export default function About() {
           </div>
 
           <div>
-            <h1 className="mb-5 font-serif font-semibold tracking-normal text-4xl">
-              From Field to Fork
+            <h1 className="mb-5 font-festive font-bold tracking-normal text-6xl">
+              From Field to <span className='text-orange-900'>Fork</span>
             </h1>
-            <p>
+            <p className="font-roboto">
               We are committed to ensuring the highest standards of product
               quality and sourcing at our bakery. We meticulously select the
               finest ingredients, sourcing locally whenever possible to support
@@ -133,15 +134,15 @@ export default function About() {
         </div>
       </div>
       <div className="py-10">
-        <h1 className="text-brown text-center font-serif font-semibold tracking-normal text-4xl">
-          Our Baking Maestros
+        <h1 className="text-brown text-center font-festive font-semibold tracking-normal text-6xl">
+          Our Baking <span className='text-orange-900'>Maestros</span>
         </h1>
         <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-4 grid-cols-1 xl:grid-cols-4 lg:mx-24 xl:mx-24 md:mx-24 mx-4 py-5">
           <ProfileCard
             picture="/w1.jpg"
             name="Emily Rodriguez"
             designation="Head Pastry Chef"
-            description="With years of experience and a creative flair, Emily is the mastermind behind our bakery&apos;s exquisite pastries. Her innovative approach and attention to detail ensure that each creation is a work of art"
+            description="With years of experience and a creative flair, Emily is the mastermind behind our bakery's exquisite pastries. Her innovative approach and attention to detail ensure that each creation is a work of art"
           />
           <ProfileCard
             picture="/m1.jpg"
@@ -153,7 +154,7 @@ export default function About() {
             picture="/w2.jpg"
             name="Olivia Martinez"
             designation="Cake Decorating Guru"
-            description="Olivia&apos;s expertise lies in transforming cakes into edible masterpieces. With her artistic skills and meticulous attention to design, she brings joy and wonder to every celebration with her beautifully decorated cakes"
+            description="Olivia's expertise lies in transforming cakes into edible masterpieces. With her artistic skills and meticulous attention to design, she brings joy and wonder to every celebration with her beautifully decorated cakes"
           />
           <ProfileCard
             picture="/w4.jpg"
