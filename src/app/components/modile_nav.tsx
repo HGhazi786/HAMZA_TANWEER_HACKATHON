@@ -30,7 +30,7 @@ export default function Navbar() {
   };
 
   return (
-    <main className="navbg font-roboto text-orange-50">
+    <main className="navbg font-sans text-orange-50">
       <nav>
         <div className="flex items-center justify-between mrgn">
           <div className=" flex space-x-3">

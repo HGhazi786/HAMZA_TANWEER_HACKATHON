@@ -8,7 +8,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Old Standard TT"],
         festive: ["Style Script"],
         roboto: ["Poppins"],
         great: ["Great Vibes"],

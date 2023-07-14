@@ -7,6 +7,7 @@ interface prod_data {
   price: number;
   image: string;
   quantity: number;
+  totalPrice:number;
 }
 
 export interface CartState {
@@ -31,25 +32,44 @@ const cartSlice = createSlice({
     ) {
       const newItem = action.payload.product;
       const existingItem = state.items.find((item) => item._id === newItem._id);
+
       state.totalQuantity = state.totalQuantity + action.payload.quantity;
       state.totalAmount =
         state.totalAmount +
         action.payload.quantity * action.payload.product.price;
-        if (!existingItem) {
-          state.items.push({
-            ...newItem,
-            quantity: action.payload.quantity,
-          });
-        }
 
+      if (!existingItem) {
+        const totalPrice = newItem.price * action.payload.quantity;
+        state.items.push({
+          ...newItem,
+          // @ts-ignore
+          quantity: action.payload.quantity,
+          totalPrice,
+        });
+      } else {
+        const totalPrice =
+          existingItem.totalPrice +
+          existingItem.price * action.payload.quantity;
+        existingItem.quantity += action.payload.quantity;
+        existingItem.totalPrice = totalPrice;
+      }
     },
 
     removeFromCart(state: CartState, action: PayloadAction<string>) {
       const productId = action.payload;
       const existingItem = state.items.find((item) => item._id === productId);
-      state.items=state.items.filter((item) => item._id !== productId);
+
       state.totalQuantity--;
+
       state.totalAmount = state.totalAmount - existingItem?.price!;
+
+      if (existingItem?.quantity === 1) {
+        state.items = state.items.filter((item) => item._id !== productId);
+      } else {
+        existingItem!.quantity--;
+        existingItem!.totalPrice =
+        existingItem!.totalPrice - existingItem?.price!;
+      }
     },
     clearCart(state) {
       state = initialState;

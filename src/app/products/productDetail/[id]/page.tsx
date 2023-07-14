@@ -14,26 +14,23 @@ interface prod_data {
   price: number;
   image: string;
   quantity: number;
+  totalPrice:number;
 }
 
 interface Props {
   product: prod_data;
 }
 
-interface CounterState {
-  qty: number;
-}
-
 const AddToCartBtn = (props: Props) => {
   const dispatch = useDispatch();
-  const product_data:prod_data = {
-    _id:props.product._id,
-    name:props.product.name,
-    image:props.product.image,
-    price:props.product.price,
-    quantity:props.product.quantity,
-    
-  }
+  const product_data: prod_data = {
+    _id: props.product._id,
+    name: props.product.name,
+    image: props.product.image,
+    price: props.product.price,
+    quantity: props.product.quantity,
+    totalPrice: props.product.price * props.product.quantity,
+  };
   const clickhandle= async()=>{
      dispatch(cartActions.addToCart({ product: product_data, quantity: product_data.quantity }));
     const res = await fetch("/api/cart", {
@@ -72,6 +69,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
     image: image,
     price: price,
     quantity: qty,
+    totalPrice:price*qty,
   };
 
   const renderStars = () => {
