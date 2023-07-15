@@ -73,10 +73,11 @@ export default function Navbar() {
                   <UserButton afterSignOutUrl="/" />
                 </SignedIn>
                 <SignedOut>
-                  {/* Signed out users get sign in button */}
-                  <Link href={"https://alert-viper-80.accounts.dev/sign-in"}>
-                    <MdAccountCircle className="text-xl" />
-                  </Link>
+                  <SignInButton mode="modal">
+                    <button>
+                      <MdAccountCircle className="text-xl" />
+                    </button>
+                  </SignInButton>
                 </SignedOut>
               </li>
               <li>
