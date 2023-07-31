@@ -32,11 +32,11 @@ const AddToCartBtn = (props: Props) => {
     totalPrice: props.product.price * props.product.quantity,
   };
   const clickhandle= async()=>{
-     dispatch(cartActions.addToCart({ product: product_data, quantity: product_data.quantity }));
-    const res = await fetch("/api/cart", {
-      method: "POST",
-      body: JSON.stringify({ product_id: product_data._id, quantity :product_data.quantity}),
-    });
+    dispatch(cartActions.addToCart({ product: product_data, quantity: product_data.quantity }));
+    // const res = await fetch("/api/cart", {
+    //   method: "POST",
+    //   body: JSON.stringify({ product_id: product_data._id, quantity :product_data.quantity}),
+    // });
     toast.success("Product added");
   }
 return (
@@ -50,9 +50,14 @@ return (
     );
 };
 
-const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
+
+
+const ProductDetailsPage = async (
+  { params }: { params: { id: string } },
+  props: Props
+) => {
   const [qty, setQuantity] = useState(1);
-  const id = params.id
+  const id = params.id;
   const projects = await getProducts();
   const filteredProjects = projects.filter((project) => project._id === id);
   const project = filteredProjects[0];
@@ -69,7 +74,7 @@ const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
     image: image,
     price: price,
     quantity: qty,
-    totalPrice:price*qty,
+    totalPrice: price * qty,
   };
 
   const renderStars = () => {

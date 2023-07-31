@@ -10,6 +10,12 @@ import { FaShoppingCart, FaTrash } from 'react-icons/fa';
 import Link from 'next/link';
 import { FiShoppingCart } from 'react-icons/fi';
 
+
+interface ProductPayload {
+  product_id: string;
+  quantity: number;
+}
+
 export default function CartPage() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalPrice = useSelector((state: RootState) => state.cart.totalAmount);
@@ -18,8 +24,13 @@ export default function CartPage() {
   );
   const dispatch=useDispatch()
 
+  const payload=(): ProductPayload[]=> {
+    return cartItems.map((product) => ({
+      product_id: product._id,
+      quantity: product.quantity,
+    }));
+  }
   const handleCheckout = async () => {
-    
     const stripe = await getStipePromise();
     const response = await fetch("/api/checkout/", {
       method: "POST",
@@ -27,12 +38,40 @@ export default function CartPage() {
       cache: "no-cache",
       body: JSON.stringify(cartItems),
     });
-    
+
+    const res = await fetch("/api/cart", {
+      method: "POST",
+      body: JSON.stringify({
+        payload,
+      }),
+    });
 
     const data = await response.json();
     if (data.session) {
       stripe?.redirectToCheckout({ sessionId: data.session.id });
     }
+
+    for (const product of cartItems) {
+      try {
+        const response = await fetch("/api/cart", {
+          method: "POST",
+          body: JSON.stringify({
+            _id: product._id,
+            quantity: product.quantity,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Product added to cart:", data); // Process the response data as needed
+        } else {
+          console.error("Failed to add product to cart");
+        }
+      } catch (error) {
+        console.error("Error adding product to cart:", error);
+      }
+    }
+    
   };
   if (cartItems.length > 0) {
   return (
