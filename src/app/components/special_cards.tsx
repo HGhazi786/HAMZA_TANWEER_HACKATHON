@@ -34,14 +34,16 @@ export default function S_cards(props: s_props) {
           height={200}
           className="rounded-xl mr-8"
         />
-        <div className="">
-          <h2 className="text-4xl font-semibold b-4 font-festive">{props.name}</h2>
+        <div className={props.button}>
+          <h2 className="text-4xl font-semibold b-4 font-festive">
+            {props.name}
+          </h2>
           <h2 className="text-lg font-normal mb-4">{props.price}</h2>
           <Link
-            href="#"
+            href={props.button}
             className="bg-brown hover:bg-orange-900 mb-4 text-orange-50 px-4 py-2 rounded-xl"
           >
-            {props.button}
+            Buy Now
           </Link>
           <div className="">
             <div className="flex mr-2 mt-5">{renderStars()}</div>

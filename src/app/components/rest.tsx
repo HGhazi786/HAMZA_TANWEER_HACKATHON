@@ -104,42 +104,28 @@ export default function Front_page() {
               price="$50"
               ratings={5}
               picture="/sp1.jpg"
-              button="Buy Now"
-            />
-            <S_cards
-              name="Croissants"
-              price="$10"
-              ratings={5}
-              picture="/sp2.jpg"
-              button="Buy Now"
+              button="/products/productDetail/8c2c41b7-fb10-4900-af41-086f0ce9c759"
             />
             <S_cards
               name="Molten Lava Cake"
               price="$25"
               ratings={5}
               picture="/sp3.jpg"
-              button="Buy Now"
+              button="/products/productDetail/9829ea78-fbe3-45a5-8dcf-6d6cc383f389"
             />
             <S_cards
               name="Chocolate Hazelnut"
               price="$50"
               ratings={5}
               picture="/sp4.jpg"
-              button="Buy Now"
+              button="/products/productDetail/84f3e8c3-dd44-4c22-b52e-338f3d2e87d5"
             />
             <S_cards
               name="Nutella Filled cookies"
               price="$20"
               ratings={5}
               picture="/sp5.jpg"
-              button="Buy Now"
-            />
-            <S_cards
-              name="Black Forest Cake"
-              price="$50"
-              ratings={5}
-              picture="/sp1.jpg"
-              button="Buy Now"
+              button="/products/productDetail/a4961bac-f3cf-4ba2-996b-169d369879c0"
             />
           </div>
         </div>

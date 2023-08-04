@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { getProducts } from "../../../../../sanity/sanity-utils";
 import { cartActions } from "@/store/features/cartslice";
+import { P } from "drizzle-orm/db.d-cf0abe10";
 
 interface prod_data {
   _id: string;
@@ -15,6 +16,7 @@ interface prod_data {
   image: string;
   quantity: number;
   totalPrice:number;
+  avaliability:boolean;
 }
 
 interface Props {
@@ -30,6 +32,7 @@ const AddToCartBtn = (props: Props) => {
     price: props.product.price,
     quantity: props.product.quantity,
     totalPrice: props.product.price * props.product.quantity,
+    avaliability:props.product.avaliability
   };
   const clickhandle= async()=>{
     dispatch(cartActions.addToCart({ product: product_data, quantity: product_data.quantity }));
@@ -39,7 +42,7 @@ const AddToCartBtn = (props: Props) => {
     // });
     toast.success("Product added");
   }
-return (
+if(product_data.avaliability){ return (
         <button
             onClick={clickhandle}
             className={`text-lg bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-200 text-brown w-60 h-12`}
@@ -47,6 +50,9 @@ return (
             <FaShoppingCart className="inline-block mr-2" />
             <span>Add to Cart</span>
           </button>
+    );}
+    return (
+    <p className="text-lg pr-10">We are sorry this product is currently out of stock please come back tomorrow </p>
     );
 };
 
@@ -75,6 +81,7 @@ const ProductDetailsPage = async (
     price: price,
     quantity: qty,
     totalPrice: price * qty,
+    avaliability:inStock,
   };
 
   const renderStars = () => {
