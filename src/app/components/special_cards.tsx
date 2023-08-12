@@ -25,16 +25,24 @@ export default function S_cards(props: s_props) {
     return stars;
   };
   return (
-    <div className="my-5 p-4 text-brown font-roboto border-r-2 border-r-brown shadow-2xl shadow-brown/30 border border-b-2 border-transparent border-b-brown">
-      <div className="flex items-center flex-wrap">
+    <div className="my-5 text-brown font-roboto rounded-lg shadow-lg bg-gradient-to-tl from-orange-100/20 via-orange-200/20 to-orange-300/20 backdrop-blur-md">
+      {/* 
+      microsoft edge video like affect
+      <Image
+        src={props.picture}
+        alt="Product Picture"
+        fill
+        className="rounded-lg -z-10 mr-8"
+      /> */}
+      <div className="flex items-center flex-wrap z-50 rounded-lg bg-gradient-to-tr from-orange-200/70 via-orange-100/70 to-brown/70 backdrop-blur-2xl">
         <Image
           src={props.picture}
           alt="Product Picture"
           width={200}
           height={200}
-          className="rounded-xl mr-8"
+          className="rounded-l-lg mr-8 w-[260px] h-[185px]"
         />
-        <div className={props.button}>
+        <div className={`${props.button} py-5`}>
           <h2 className="text-4xl font-semibold b-4 font-festive">
             {props.name}
           </h2>
