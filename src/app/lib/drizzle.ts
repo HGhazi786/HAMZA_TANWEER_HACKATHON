@@ -10,9 +10,9 @@ export const cartTable = pgTable("cart", {
   product_name: varchar("product_name", { length: 255 }).notNull(),
   image: text("image").notNull(),
   price: integer("price").notNull(),
-  total_price:integer("totalprice").notNull(),
-  created_at:timestamp("created_at"),
-  orderStatus:varchar("completion_status", { length: 55 }).notNull()
+  total_price: integer("totalprice").notNull(),
+  created_at: timestamp("created_at"),
+  completion_status: varchar("completion_status", { length: 55 }).notNull(),
 });
 
 export const feedbackTable = pgTable("feedback", {

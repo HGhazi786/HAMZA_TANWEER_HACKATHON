@@ -26,7 +26,7 @@ export const GET = async () => {
       quantity: item.quantity,
       date: `${item.created_at?.getDate()}-${item.created_at?.getMonth()}-${item.created_at?.getFullYear()}`,
       time: `${item.created_at?.getHours()}:${item.created_at?.getMinutes()}:${item.created_at?.getSeconds()}`,
-      orderStatus:item.orderStatus
+      orderStatus: item.completion_status,
     }));
     return NextResponse.json(Items);
   } catch (error) {
@@ -58,12 +58,12 @@ export const POST = async (request: NextRequest) => {
       .values({
         product_id: req.product_id,
         quantity: req.quantity,
-        user_id:user_id,        //cookies().get("user_id")?.value as string,
-        product_name:req.product_name,
-        total_price:req.total_price,
-        price:req.price,
-        image:req.image,
-        orderStatus:"In cart"
+        user_id: user_id, //cookies().get("user_id")?.value as string,
+        product_name: req.product_name,
+        total_price: req.total_price,
+        price: req.price,
+        image: req.image,
+        completion_status: "In cart",
       })
       .returning();
     return NextResponse.json({ res });
