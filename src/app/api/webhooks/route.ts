@@ -1,7 +1,6 @@
 import Stripe from "stripe";
 import { db, cartTable } from "../../lib/drizzle";
 import { eq } from "drizzle-orm";
-import { auth } from "@clerk/nextjs";
 import { headers } from "next/headers";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
@@ -46,16 +45,13 @@ export async function POST(req: any, res: any) {
       // @ts-ignore
       const customerData = await stripe.customers.retrieve(session.customer);
       // @ts-ignore
-      const {userId}=auth()
+      const userId = customerData.metadata.userId;
 
-      await db
-        .delete(cartTable)
-        .where(eq(cartTable.user_id, userId as string));
+      await db.delete(cartTable).where(eq(cartTable.user_id, userId));
 
       console.log("payment success-----------------------", session);
       // @ts-ignore
       const line_Items = await stripe.checkout.sessions.listLineItems(
-        // @ts-ignore
         event.data.object!.id
       );
 

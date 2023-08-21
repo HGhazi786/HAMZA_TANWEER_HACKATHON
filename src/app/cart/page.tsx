@@ -155,7 +155,7 @@ const handleToggle = () => {
           </div>
         </div>
       </div>
-      <div className="mrgn my-8">
+      <div className="mrgn border-2 rounded-lg border-brown my-8 py-4 px-10">
         <div className="flex space-x-10 py-4 px-10 justify-between w-full">
           <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
           <button
@@ -165,7 +165,7 @@ const handleToggle = () => {
             {open ? <AiOutlineUp /> : <AiOutlineDown />}
           </button>
         </div>
-        {open && <History props={open}/>}
+        {open && <History props={open} />}
       </div>
     </div>
   );
