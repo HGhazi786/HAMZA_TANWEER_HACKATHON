@@ -6,7 +6,8 @@ import { toast } from 'react-hot-toast';
 import { cartActions } from '@/store/features/cartslice';
 import { useDispatch } from 'react-redux';
 
-export default async function History() {
+
+export default async function History(props:any) {
 const dispatch = useDispatch();
 
 async function clickhandle(item:any) {
@@ -36,12 +37,10 @@ const apiPost = async (item:any) => {
     }),
   });
 };
-
-  const res = await fetch( `/api/cart`, {
+  const res = props ?  await fetch( `/api/cart`, {
     method: "GET",
-  });
-  const product = await res.json();
-  console.log(product);
+  }):null
+  const product = await res?.json();
 
   const deleteApi = async (id: string) => {
     try {

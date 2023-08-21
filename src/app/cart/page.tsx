@@ -155,16 +155,18 @@ const handleToggle = () => {
           </div>
         </div>
       </div>
-      <div className="flex space-x-10 mrgn py-8">
-        <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
-        <button
-          onClick={() => handleToggle()}
-          className="text-xl font-bold text-brown"
-        >
-          {open ? <AiOutlineUp /> : <AiOutlineDown />}
-        </button>
+      <div className="mrgn my-8">
+        <div className="flex space-x-10 py-4 px-10 justify-between w-full">
+          <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
+          <button
+            onClick={() => handleToggle()}
+            className="text-xl font-bold text-brown"
+          >
+            {open ? <AiOutlineUp /> : <AiOutlineDown />}
+          </button>
+        </div>
+        {open && <History props={open}/>}
       </div>
-      {open && <History />}
     </div>
   );
 }
@@ -182,17 +184,22 @@ else {
             <span>Start Shopping</span>
           </Link>
         </div>
-        {isSignedIn && (
-          <button className="flex justify-between mrgn my-8 p-4 w-full items-center border-2 rounded-lg border-brown">
-            <h3 className="text-3xl font-roboto font-bold">
-              Previous Purchases
-            </h3>
-            <button onClick={() => handleToggle()} className='text-xl font-bold text-brown'>
-              {open ? <AiOutlineUp /> : <AiOutlineDown />}
+        <div className="mrgn border-2 rounded-lg border-brown my-8 py-4 px-10">
+          {isSignedIn && (
+            <button className="flex justify-between items-center w-full">
+              <h3 className="text-3xl font-roboto font-bold">
+                Previous Purchases
+              </h3>
+              <button
+                onClick={() => handleToggle()}
+                className="text-xl font-bold text-brown"
+              >
+                {open ? <AiOutlineUp /> : <AiOutlineDown />}
+              </button>
             </button>
-          </button>
-        )}
-        {open && isSignedIn && <History />}
+          )}
+          {open && isSignedIn && <History props={open}/>}
+        </div>
       </main>
     );
   }
