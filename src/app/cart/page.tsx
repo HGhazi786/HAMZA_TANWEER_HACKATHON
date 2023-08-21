@@ -155,9 +155,12 @@ const handleToggle = () => {
           </div>
         </div>
       </div>
-      <div className="flex space-x-10 mrgn">
+      <div className="flex space-x-10 mrgn py-8">
         <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
-        <button onClick={() => handleToggle()}>
+        <button
+          onClick={() => handleToggle()}
+          className="text-xl font-bold text-brown"
+        >
           {open ? <AiOutlineUp /> : <AiOutlineDown />}
         </button>
       </div>
@@ -169,7 +172,7 @@ else {
     return (
       <main>
         <div className="flex flex-col w-full gap-10 h-full justify-center items-center py-10">
-          <FiShoppingCart size={200} className='text-brown opacity-70'/>
+          <FiShoppingCart size={200} className="text-brown opacity-70" />
           <h1>Your shopping cart is empty</h1>
           <Link
             href="/products"
@@ -179,13 +182,16 @@ else {
             <span>Start Shopping</span>
           </Link>
         </div>
-        {isSignedIn &&
-        <div className='flex space-x-10 mrgn'>
-        <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
-        <button onClick={() => handleToggle()}>
-          {open ? <AiOutlineUp /> : <AiOutlineDown />}
-        </button>
-        </div>}
+        {isSignedIn && (
+          <button className="flex justify-between mrgn my-8 p-4 w-full items-center border-2 rounded-lg border-brown">
+            <h3 className="text-3xl font-roboto font-bold">
+              Previous Purchases
+            </h3>
+            <button onClick={() => handleToggle()} className='text-xl font-bold text-brown'>
+              {open ? <AiOutlineUp /> : <AiOutlineDown />}
+            </button>
+          </button>
+        )}
         {open && isSignedIn && <History />}
       </main>
     );

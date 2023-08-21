@@ -84,9 +84,14 @@ const apiPost = async (item:any) => {
               Quantity: {item.quantity}
             </p>
           </div>
-          <div className="flex flex-col space-y-1 mt-1 md:space-y-8 xl:space-y-8 lg:space-y-8 items-start">
-            <p className="text-xl font-roboto font-bold">Time: {item.time}</p>
-            <p className="text-xl font-roboto font-bold">Date: {item.date}</p>
+          <div className="flex flex-col space-y-1 mt-1 md:space-y-3 xl:space-y-8 lg:space-y-8 items-start">
+            <p className="text-md font-roboto font-semibold">
+              Time: {item.time}
+            </p>
+            <p className="text-md font-roboto font-semibold">
+              Date: {item.date}
+            </p>
+            <p className="text-md font-roboto font-semibold">Order Status: {item.orderStatus}</p>
           </div>
           <div className="flex flex-col space-y-1 mt-1 md:space-y-12 xl:space-y-12 lg:mr-5 xl:mr-5 md:mr-5 lg:space-y-12 items-end">
             <div className="space-x-5">

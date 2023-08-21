@@ -1,7 +1,5 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import TestimonialCard from "./testimonal_cards";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 const testimonials = [
   {
@@ -60,85 +58,26 @@ const testimonials = [
   },
 ];
 
-const AnimatedTestimonials = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [numCards, setNumCards] = useState(0); // Number of cards to show based on screen size
+export function Carousel() {
 
-  const handleResize = () => {
-    if (window.innerWidth >= 1920) {
-      setNumCards(3);
-    } else {
-      setNumCards(1);
-    }
-  };
-
-  useEffect(() => {
-    // Set initial number of cards based on screen size
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on component unmount
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) => prevSlide + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prevSlide) => prevSlide - 1);
-  };
-
-  useEffect(() => {
-    const totalSlides = testimonials.length;
-    if (currentSlide === totalSlides) {
-      setCurrentSlide(0);
-    }
-    if (currentSlide === -1) {
-      setCurrentSlide(totalSlides - 1);
-    }
-  }, [currentSlide, testimonials.length]);
-
-  const renderedTestimonials = testimonials.map((testimonial, index) => (
-    <div
-      key={index}
-      className={`w-1/${numCards} ${
-        index >= currentSlide && index < currentSlide + numCards
-          ? "block"
-          : "hidden"
-      } px-4`}
-    >
-      <TestimonialCard
-        name={testimonial.name}
-        event={testimonial.event}
-        comment={testimonial.comment}
-        rating={testimonial.rating}
-        picture={testimonial.picture}
-      />
-    </div>
-  ));
+  // Purposefully duplicating products to make the carousel loop and not run out of products on wide screens.
+  const carouselProducts = [...testimonials];
 
   return (
-    <div className="">
-      <button
-        className="absolute left-0 my-36 px-4 py-2 bg-brown text-orange-50 z-50"
-        onClick={prevSlide}
-      >
-        <AiOutlineArrowLeft />
-      </button>
-      <button
-        className="absolute right-0 my-36 px-4 py-2 bg-brown text-orange-50 z-50"
-        onClick={nextSlide}
-      >
-        <AiOutlineArrowRight />
-      </button>
-      <div className="relative">
-        <div className="flex mx-4">{renderedTestimonials}</div>
-      </div>
+    <div className=" w-full overflow-x-hidden pb-6 pt-1">
+      <ul className="flex animate-carousel gap-4">
+        {carouselProducts.map((product, i) => (
+          <li className="h-[100vh] max-h-[475px] w-2/3 max-w-[475px] flex-none md:w-1/3" key={product.name}>
+            <TestimonialCard
+              name={product.name}
+              picture={product.picture}
+              event={product.event}
+              comment={product.comment}
+              rating={product.rating}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
-
-export default AnimatedTestimonials;
+}

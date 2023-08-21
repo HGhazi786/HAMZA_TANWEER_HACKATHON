@@ -1,16 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import AnimatedTestimonials from "./testimonial_anim";
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import Catagory from "./catagory";
 import S_cards from "./special_cards";
-import BackgroundSlider from "./slider";
+import { Carousel } from "./carousel";
 
 export default function Front_page() {
   return (
     <div className="bg-orange-100">
-      <div className="grid md:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 md:py-10 lg:py-10 xl:py-10 gap-y-4 xl:gap-x-10 md:gap-x-10 lg:gap-x-10 lg:mx-24 xl:mx-24 md:mx-16 mx-4">
+      <div className="grid md:grid-cols-2 xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 md:py-10 lg:py-10 xl:py-10 gap-y-4 xl:gap-x-10 md:gap-x-10 lg:gap-x-10 mrgn">
         <div className="">
           <h1 className="text-6xl text-orange-900 font-festive font-extrabold tracking-wider lg:mt-36 xl:mt-36 md:mt-36 mt-6">
             <span className="text-orange-950">Our</span> Products
@@ -60,7 +59,7 @@ export default function Front_page() {
         </div>
       </div>
       <div className="flex py-16 items-center justify-center bg-brown mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-8 font-festive">
+        <div className="mrgn grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-8 font-festive">
           <Catagory
             title="Cake"
             description="Heavenly perfection,cakes are pure indulgence"
@@ -98,7 +97,7 @@ export default function Front_page() {
           <h1 className="font-festive font-semibold tracking-wider text-6xl text-orange-800 lg:mx-24 md:mx-10 xl:mx-24 mx-4 text-center">
             <span className="text-brown">Our</span> Specialities
           </h1>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-20 gap-y-2 lg:mx-24 xl:mx-24 md:mx-16 mx-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-20 gap-y-2 mrgn">
             <S_cards
               name="Black Forest Cake"
               price="$50"
@@ -164,7 +163,7 @@ export default function Front_page() {
           <h1 className="font-festive font-bold tracking-wider text-6xl text-brown text-center md:text-center lg:text-left xl:text-left">
             Testimonials
           </h1>
-          <AnimatedTestimonials />
+          <Carousel/>
         </div>
       </div>
     </div>

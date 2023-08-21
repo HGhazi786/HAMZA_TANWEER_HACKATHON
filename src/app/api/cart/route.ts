@@ -26,6 +26,7 @@ export const GET = async () => {
       quantity: item.quantity,
       date: `${item.created_at?.getDate()}-${item.created_at?.getMonth()}-${item.created_at?.getFullYear()}`,
       time: `${item.created_at?.getHours()}:${item.created_at?.getMinutes()}:${item.created_at?.getSeconds()}`,
+      orderStatus:item.orderStatus
     }));
     return NextResponse.json(Items);
   } catch (error) {
@@ -62,6 +63,7 @@ export const POST = async (request: NextRequest) => {
         total_price:req.total_price,
         price:req.price,
         image:req.image,
+        orderStatus:"In cart"
       })
       .returning();
     return NextResponse.json({ res });

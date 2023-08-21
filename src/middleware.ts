@@ -7,6 +7,7 @@ export default authMiddleware({
     "/cart",
     "/contact",
     "/about",
+    "/api/webhooks"
   ],
 });
 

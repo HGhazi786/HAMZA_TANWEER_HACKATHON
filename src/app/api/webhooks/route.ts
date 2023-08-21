@@ -47,7 +47,10 @@ export async function POST(req: any, res: any) {
       // @ts-ignore
       const userId = customerData.metadata.userId;
 
-      await db.delete(cartTable).where(eq(cartTable.user_id, userId));
+      await db
+        .update(cartTable)
+        .set({ orderStatus:"Payment Done"})
+        .where(eq(cartTable.user_id, userId));
 
       console.log("payment success-----------------------", session);
       // @ts-ignore

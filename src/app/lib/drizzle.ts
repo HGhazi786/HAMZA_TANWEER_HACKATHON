@@ -11,7 +11,8 @@ export const cartTable = pgTable("cart", {
   image: text("image").notNull(),
   price: integer("price").notNull(),
   total_price:integer("totalprice").notNull(),
-  created_at:timestamp("created_at")
+  created_at:timestamp("created_at"),
+  orderStatus:varchar("completion_status", { length: 55 }).notNull()
 });
 
 export const feedbackTable = pgTable("feedback", {

@@ -35,7 +35,7 @@ export default function About() {
           </p>
         </div>
       </div>
-      <div className="lg:mx-24 xl:mx-24 md:mx-24 mx-4 text-lg font-roboto">
+      <div className="mrgn text-lg font-roboto">
         <div className="text-brown grid py-10 grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-x-10 gap-y-5">
           <div>
             <h1 className="font-festive font-semibold tracking-normal text-6xl mb-5">
@@ -137,7 +137,7 @@ export default function About() {
         <h1 className="text-brown text-center font-festive font-semibold tracking-normal text-6xl">
           Our Baking <span className='text-orange-900'>Maestros</span>
         </h1>
-        <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-4 grid-cols-1 xl:grid-cols-4 lg:mx-24 xl:mx-24 md:mx-24 mx-4 py-5">
+        <div className="grid gap-4 lg:grid-cols-4 md:grid-cols-4 grid-cols-1 xl:grid-cols-4 mrgn py-5">
           <ProfileCard
             picture="/w1.jpg"
             name="Emily Rodriguez"
