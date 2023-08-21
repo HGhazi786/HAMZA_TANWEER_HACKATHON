@@ -51,9 +51,7 @@ export async function POST(req: any, res: any) {
 
       console.log("payment success-----------------------", session);
       // @ts-ignore
-      const line_Items = await stripe.checkout.sessions.listLineItems(
-        event.data.object!.id
-      );
+      const line_Items = await stripe.checkout.sessions.listLineItems(event.data.object!.id);
 
       return new Response("Payment Confirmation Router Reciept", {
         status: 200,
