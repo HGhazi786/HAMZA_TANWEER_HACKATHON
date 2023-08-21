@@ -1,14 +1,20 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import getStipePromise from "../lib/stripe";
 import Image from 'next/image';
 import { useDispatch } from "react-redux";
 import { cartActions } from "@/store/features/cartslice";
-import { FaShoppingCart, FaTrash } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
+import {BsTrash3} from 'react-icons/bs'
 import Link from 'next/link';
 import { FiShoppingCart } from 'react-icons/fi';
+import MyQuantity from "../components/quantity";
+import toast  from 'react-hot-toast';
+import { SignInButton,useUser} from '@clerk/nextjs';
+import History from '../components/history';
+import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 
 
 interface ProductPayload {
@@ -16,7 +22,10 @@ interface ProductPayload {
   quantity: number;
 }
 
+
 export default function CartPage() {
+  const [open, setOpen] = useState(false);
+  const {isSignedIn,user} = useUser()
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalPrice = useSelector((state: RootState) => state.cart.totalAmount);
   const totalquantity = useSelector(
@@ -24,12 +33,14 @@ export default function CartPage() {
   );
   const dispatch=useDispatch()
 
-  const payload=(): ProductPayload[]=> {
-    return cartItems.map((product) => ({
-      product_id: product._id,
-      quantity: product.quantity,
-    }));
-  }
+  
+const handleToggle = () => {
+  if(open)
+  {setOpen(false);}
+  else
+  {setOpen(true)}
+};
+
   const handleCheckout = async () => {
     const stripe = await getStipePromise();
     const response = await fetch("/api/checkout/", {
@@ -39,117 +50,118 @@ export default function CartPage() {
       body: JSON.stringify(cartItems),
     });
 
-    const res = await fetch("/api/cart", {
-      method: "POST",
-      body: JSON.stringify({
-        payload,
-      }),
-    });
-
     const data = await response.json();
     if (data.session) {
       stripe?.redirectToCheckout({ sessionId: data.session.id });
     }
-
-    for (const product of cartItems) {
-      try {
-        const response = await fetch("/api/cart", {
-          method: "POST",
-          body: JSON.stringify({
-            _id: product._id,
-            quantity: product.quantity,
-          }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log("Product added to cart:", data); // Process the response data as needed
-        } else {
-          console.error("Failed to add product to cart");
-        }
-      } catch (error) {
-        console.error("Error adding product to cart:", error);
-      }
+  }
+  
+  const deleteApi=async (id:string)=>{
+    try {
+      const response = await fetch(`/api/cart/${id}`, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
     }
+  }
+  async function handleDelete(id: string) {
+    toast.promise(deleteApi(id), {
+      loading: "Deleting Product",
+      success: "Product Deleted Successfully",
+      error: "Failed to Delete",
+    });
+    dispatch(cartActions.removeProduct(id));
     
   };
+
   if (cartItems.length > 0) {
   return (
-    <div className="flex flex-col lg:flex-row xl:flex-row items-center justify-between gap-x-28 mrgn">
-      <div className="basis-3/4">
-        <title>Cart</title>
-        {cartItems.map((item) => (
-          <div
-            key={item._id}
-            className="bg-orange-50 my-10 gap-y-3 rounded-lg grid md:grid-cols-4 xl:grid-cols-4 grid-cols-1 lg:grid-cols-4 items-center py-2"
-          >
-            <div className="flex justify-center">
-              <Image
-                src={item.image}
-                width={200}
-                height={150}
-                alt={item.name}
-              />
-            </div>
-            <p className="text-brown text-4xl tracking-wider font-bold text-center font-festive">
-              {item.name}
-            </p>
-            <div className="flex flex-col space-y-1 mt-1 md:space-y-3 xl:space-y-3 lg:space-y-3">
-              <p className="text-center text-brown text-lg">
-                Price: {item.price} $
-              </p>
-              <p className="text-center text-brown text-lg">
-                Quantity: {item.quantity}
-              </p>
-            </div>
-            <div className="flex flex-col space-y-1 mt-1 md:space-y-3 xl:space-y-3 lg:space-y-3 items-center justify-center">
-              <p className="text-center text-brown text-lg font-bold">
-                Total:{item.totalPrice} $
-              </p>
-              <button
-                onClick={() => {
-                  dispatch(cartActions.removeProduct(item._id));
-                }}
-              >
-                <FaTrash className="text-brown hover:text-orange-900 text-xl" />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="basis-1/4 my-10">
-        <div className="bg-brown p-4 rounded-xl text-orange-50">
-          <div className="flex flex-col items-center justify-between gap-5">
-            <h4>Order Summary</h4>
-            <div className="flex justify-between items-center w-full">
-              <div>
-                <p>Quantity</p>
+    <div>
+      <div className="flex flex-col lg:flex-row xl:flex-row items-center justify-between gap-x-[350px] mrgn">
+        <div className="basis-3/4">
+          <title>Cart</title>
+          <h3 className="text-3xl font-roboto font-bold">Current Purchases</h3>
+          {cartItems.map((item) => (
+            <div
+              key={item._id}
+              className="bg-gradient-to-tl from-orange-200/70 via-orange-200/70 to-orange-900/70 shadow-lg shadow-brown/30 my-10 rounded-lg grid md:grid-cols-3 xl:grid-cols-3 grid-cols-1 lg:grid-cols-3 items-center"
+            >
+              <div className="flex justify-center">
+                <Image
+                  src={item.image}
+                  width={200}
+                  height={150}
+                  alt={item.name}
+                  className="rounded-l-lg mr-4 w-[300px] h-[180px]"
+                />
               </div>
-              <div>
-                <p>{totalquantity}</p>
+              <div className="flex flex-col space-y-1 mt-1 md:space-y-8 xl:space-y-8 lg:space-y-8 items-start">
+                <p className="text-brown text-4xl tracking-wider font-bold text-center font-festive">
+                  {item.name}
+                </p>
+                <MyQuantity id={item._id} quty={item.quantity} citem={item} />
               </div>
-            </div>
-            <div className="flex justify-between items-center w-full">
-              <div>
-                <p>Total Amount</p>
-              </div>
-              <div>
-                <p>${totalPrice}</p>
-              </div>
-            </div>
-            <div>
-              <div className="py-5">
-                <button
-                  className="bg-orange-50 py-2 px-3 rounded-md text-orange-950 font-sans hover:bg-orange-200"
-                  onClick={handleCheckout}
-                >
-                  Proceed to Check out
+              <div className="flex flex-col space-y-1 mt-1 md:space-y-12 xl:space-y-12 lg:mr-5 xl:mr-5 md:mr-5 lg:space-y-12 items-end">
+                <button onClick={() => handleDelete(item._id)}>
+                  <BsTrash3 className="text-brown hover:text-orange-900 text-xl" />
                 </button>
+                <p className="text-center text-brown text-lg font-bold">
+                  Total:{item.totalPrice} $
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="basis-1/4 my-10">
+          <div className="bg-brown p-4 rounded-xl text-orange-50">
+            <div className="flex flex-col items-center justify-between gap-5">
+              <h4>Order Summary</h4>
+              <div className="flex justify-between items-center w-full">
+                <div>
+                  <p>Quantity</p>
+                </div>
+                <div>
+                  <p>{totalquantity}</p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center w-full">
+                <div>
+                  <p>Total Amount</p>
+                </div>
+                <div>
+                  <p>${totalPrice}</p>
+                </div>
+              </div>
+              <div>
+                <div className="py-5">
+                  {isSignedIn ? (
+                    <button
+                      className="bg-orange-50 py-2 px-3 rounded-md text-orange-950 font-sans hover:bg-orange-200"
+                      onClick={handleCheckout}
+                    >
+                      Proceed to Check out
+                    </button>
+                  ) : (
+                    <SignInButton mode="modal">
+                      <button className="bg-orange-50 py-2 px-3 rounded-md text-orange-950 font-sans hover:bg-orange-200">
+                        Proceed to Check out
+                      </button>
+                    </SignInButton>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="flex space-x-10 mrgn">
+        <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
+        <button onClick={() => handleToggle()}>
+          {open ? <AiOutlineUp /> : <AiOutlineDown />}
+        </button>
+      </div>
+      {open && <History />}
     </div>
   );
 }
@@ -167,6 +179,14 @@ else {
             <span>Start Shopping</span>
           </Link>
         </div>
+        {isSignedIn &&
+        <div className='flex space-x-10 mrgn'>
+        <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
+        <button onClick={() => handleToggle()}>
+          {open ? <AiOutlineUp /> : <AiOutlineDown />}
+        </button>
+        </div>}
+        {open && isSignedIn && <History />}
       </main>
     );
   }

@@ -7,9 +7,8 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { getProducts } from "../../../../../sanity/sanity-utils";
 import { cartActions } from "@/store/features/cartslice";
-import { P } from "drizzle-orm/db.d-cf0abe10";
 
-interface prod_data {
+interface mprod_data {
   _id: string;
   name: string;
   price: number;
@@ -20,12 +19,12 @@ interface prod_data {
 }
 
 interface Props {
-  product: prod_data;
+  product: mprod_data;
 }
 
 const AddToCartBtn = (props: Props) => {
   const dispatch = useDispatch();
-  const product_data: prod_data = {
+  const product_data: mprod_data = {
     _id: props.product._id,
     name: props.product.name,
     image: props.product.image,
@@ -34,14 +33,35 @@ const AddToCartBtn = (props: Props) => {
     totalPrice: props.product.price * props.product.quantity,
     avaliability:props.product.avaliability
   };
-  const clickhandle= async()=>{
-    dispatch(cartActions.addToCart({ product: product_data, quantity: product_data.quantity }));
-    // const res = await fetch("/api/cart", {
-    //   method: "POST",
-    //   body: JSON.stringify({ product_id: product_data._id, quantity :product_data.quantity}),
-    // });
-    toast.success("Product added");
+  const clickhandle= ()=>{
+    
+    toast.promise(apiPost(), {
+      loading: "Adding to Cart",
+      success: "Product added successfully",
+      error: "Failed to add to cart",
+    });
+    dispatch(
+      cartActions.addToCart({
+        product: product_data,
+        quantity: product_data.quantity,
+      })
+    );
   }
+
+  const apiPost=async()=>{
+    const res = await fetch("/api/cart", {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: product_data._id,
+        quantity: product_data.quantity,
+        product_name:product_data.name,
+        price:product_data.price,
+        total_price:product_data.price*product_data.quantity,
+        image:product_data.image,
+      }),
+    });
+  }
+
 if(product_data.avaliability){ return (
         <button
             onClick={clickhandle}
@@ -59,9 +79,7 @@ if(product_data.avaliability){ return (
 
 
 const ProductDetailsPage = async (
-  { params }: { params: { id: string } },
-  props: Props
-) => {
+  { params }: { params: { id: string } }) => {
   const [qty, setQuantity] = useState(1);
   const id = params.id;
   const projects = await getProducts();
@@ -74,7 +92,7 @@ const ProductDetailsPage = async (
   const image = project.image;
   const inStock = project.avaliability;
 
-  const product: prod_data = {
+  const product: mprod_data = {
     _id: String(id),
     name: name,
     image: image,
@@ -128,5 +146,7 @@ const ProductDetailsPage = async (
     </div>
   );
 };
+
+
 
 export default ProductDetailsPage;
