@@ -4,8 +4,7 @@ import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
-export async function POST(req: any, res: any) {
-  // console.log(endpointSecret + "End Point Secret");
+export async function PUT(req: any, res: any) {
 
   const headerslist = headers();
 
@@ -17,8 +16,6 @@ export async function POST(req: any, res: any) {
       apiVersion: "2022-11-15",
     });
 
-    // console.log(process.env.STRIPE_SECRET_KEY + "stripe secret key");
-
     let event;
 
     try {
@@ -29,7 +26,7 @@ export async function POST(req: any, res: any) {
       }
 
       event = stripe.webhooks.constructEvent(
-        rawBody.toString(), // Stringify the request for the Stripe library
+        rawBody.toString(),
         sig,
         endpointSecret
       );
@@ -39,6 +36,7 @@ export async function POST(req: any, res: any) {
         status: 400,
       });
     }
+    console.log(event.type)
 
     if ("checkout.session.completed" === event.type) {
       const session = event.data.object;
@@ -46,8 +44,9 @@ export async function POST(req: any, res: any) {
       const customerData = await stripe.customers.retrieve(session.customer);
       // @ts-ignore
       const userId = customerData.metadata.userId;
+      console.log
 
-      await db.delete(cartTable).where(eq(cartTable.user_id, userId));
+      await db.delete(cartTable).where(eq(cartTable.user_id, userId)).returning();
 
       console.log("payment success-----------------------", session);
       // @ts-ignore
