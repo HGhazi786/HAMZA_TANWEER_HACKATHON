@@ -159,7 +159,7 @@ export default function Front_page() {
             </p>
           </div>
         </div>
-        <div className="py-10 lg:mx-24 md:mx-10 xl:mx-24 mx-4">
+        <div className="py-10 mrgn">
           <h1 className="font-festive font-bold tracking-wider text-6xl text-brown text-center md:text-center lg:text-left xl:text-left">
             Testimonials
           </h1>

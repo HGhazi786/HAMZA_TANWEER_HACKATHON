@@ -65,9 +65,12 @@ export function Carousel() {
 
   return (
     <div className=" w-full overflow-x-hidden pb-6 pt-1">
-      <ul className="flex animate-carousel gap-4">
+      <ul className="flex animate-carousel hover:animate-none gap-4">
         {carouselProducts.map((product, i) => (
-          <li className="h-[100vh] max-h-[475px] w-2/3 max-w-[475px] flex-none md:w-1/3" key={product.name}>
+          <li
+            className="h-[100vh] xl:max-h-[400px] lg:max-h-[450px] md:max-h-[450px] max-h-[550px] w-screen max-w-[475px] flex-none md:w-2/3"
+            key={product.name}
+          >
             <TestimonialCard
               name={product.name}
               picture={product.picture}

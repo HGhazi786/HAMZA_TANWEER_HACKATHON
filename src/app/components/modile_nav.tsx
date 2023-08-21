@@ -23,9 +23,11 @@ export default function Navbar() {
      (state: RootState) => state.cart.totalQuantity
    );
   const [isOpen, setIsOpen] = useState(false);
+  const [Open, setOpen] = useState(false);
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
+    setOpen(!open)
   };
 
   return (
@@ -37,7 +39,7 @@ export default function Navbar() {
               <Image src="/logo.png" alt="logo" width={40} height={20} />
             </Link>
           </div>
-          <div className="lg:hidden xl:hidden md:hidden block">
+          <div className="lg:hidden xl:hidden md:hidden block fixed bg-brown p-2 rounded-full bottom-5 right-4">
             <Link
               href="/cart"
               className={`h-8 w-8 rounded-full flex justify-center items-center relative`}
@@ -126,7 +128,51 @@ export default function Navbar() {
                   <Link href={"/about"}>About us</Link>
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
-                  <DropdownMenu />
+                  <button
+                    onClick={() => setOpen((prevfilter) => !prevfilter)}
+                    className="tracking-widest"
+                  >
+                    Menu
+                  </button>
+                  {Open && (
+                    <div>
+                      <Link
+                        href="/products/cake"
+                        className="block text-orange-50 hover:bg-orange-900 hover:text-white"
+                        onClick={handleMenuClick}
+                      >
+                        Cake
+                      </Link>
+                      <Link
+                        href="/products/cupcake"
+                        className="block text-orange-50 hover:bg-orange-900 hover:text-white"
+                        onClick={handleMenuClick}
+                      >
+                        Cupcake
+                      </Link>
+                      <Link
+                        href="/products/biscuit"
+                        className="block text-orange-50 hover:bg-orange-900 hover:text-white"
+                        onClick={handleMenuClick}
+                      >
+                        Biscuit
+                      </Link>
+                      <Link
+                        href="/products/doughnut"
+                        className="block text-orange-50 hover:bg-orange-900 hover:text-white"
+                        onClick={handleMenuClick}
+                      >
+                        Doughnut
+                      </Link>
+                      <Link
+                        href="/products/bread"
+                        className="block text-orange-50 hover:bg-orange-900 hover:text-white"
+                        onClick={handleMenuClick}
+                      >
+                        Bread
+                      </Link>
+                    </div>
+                  )}
                 </li>
                 <li className="flex-grow ulanime tracking-widest">
                   <Link href={"/contact"}>Contact us</Link>

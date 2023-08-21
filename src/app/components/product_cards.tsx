@@ -36,7 +36,8 @@ const ProductCard = ({
   };
 
   return (
-    <div className="max-w-xs bg-orange-50 mx-auto rounded-lg text-brown overflow-hidden hover:translate-z-10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-brown font-roboto">
+    <Link href={btn}>
+    <div className="max-w-xs shadow-xl shadow-brown/40 bg-gradient-to-b from-orange-200/70 via-orange-100/70 to-brown/70 mx-auto rounded-lg text-brown overflow-hidden hover:translate-z-10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-brown font-roboto">
       <Image
         className="w-full"
         src={image}
@@ -45,7 +46,9 @@ const ProductCard = ({
         height={270}
       />
       <div className="px-6 py-4">
-        <h1 className="text-4xl tracking-wide font-bold mb-2 font-festive">{name}</h1>
+        <h1 className="text-4xl tracking-wide font-bold mb-2 font-festive">
+          {name}
+        </h1>
         <div className="font-semibold text-lg mb-2">
           {price}
           <span>$</span>
@@ -61,15 +64,8 @@ const ProductCard = ({
           </span>
         )}
       </div>
-      <div className="px-6 py-4">
-        <Link
-          href={btn}
-          className="bg-brown hover:bg-orange-900 text-orange-50 font-bold py-2 px-4 rounded-lg"
-        >
-          Buy Now
-        </Link>
-      </div>
     </div>
+    </Link>
   );
 };
 

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { getProducts } from "../../../../../sanity/sanity-utils";
 import { cartActions } from "@/store/features/cartslice";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 interface mprod_data {
   _id: string;
@@ -81,6 +82,7 @@ if(product_data.avaliability){ return (
 const ProductDetailsPage = async (
   { params }: { params: { id: string } }) => {
   const [qty, setQuantity] = useState(1);
+  const { isSignedIn, user } = useUser();
   const id = params.id;
   const projects = await getProducts();
   const filteredProjects = projects.filter((project) => project._id === id);
@@ -140,7 +142,18 @@ const ProductDetailsPage = async (
             </span>
           )}
           <div className="font-semibold text-xl mt-2">$ {price}</div>
-          <AddToCartBtn product={product} />
+          {isSignedIn ? (
+            <AddToCartBtn product={product} />
+          ) : (
+            <SignInButton mode="modal">
+              <button
+                className={`text-lg bg-orange-100 px-4 py-2 rounded-lg hover:bg-orange-200 text-brown w-60 h-12`}
+              >
+                <FaShoppingCart className="inline-block mr-2" />
+                <span>Add to Cart</span>
+              </button>
+            </SignInButton>
+          )}
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ module.exports = {
           '0%': { opacity: 0.2 },
           '20%': { opacity: 1 },
           '100% ': { opacity: 0.2 }
-        }
+        },
       },
       animation: {
         fadeIn: 'fadeIn .3s ease-in-out',

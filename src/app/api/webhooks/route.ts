@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { db, cartTable } from "../../lib/drizzle";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
-
+import { auth } from "@clerk/nextjs"; 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 export async function POST(req: any, res: any) {
 
