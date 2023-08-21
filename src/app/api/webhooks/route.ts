@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
-export async function PUT(req: any, res: any) {
+export async function POST(req: any, res: any) {
 
   const headerslist = headers();
 
