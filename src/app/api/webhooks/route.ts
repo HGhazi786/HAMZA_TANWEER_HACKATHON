@@ -49,8 +49,7 @@ export async function POST(req: any, res: any) {
       const {userId}=auth()
 
       await db
-        .update(cartTable)
-        .set({ completion_status: "Payment-Done" })
+        .delete(cartTable)
         .where(eq(cartTable.user_id, userId as string));
 
       console.log("payment success-----------------------", session);
