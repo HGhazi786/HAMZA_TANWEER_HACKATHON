@@ -4,7 +4,6 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/products/:path*",
-    "/api/cart/:path*",
     "/cart",
     "/contact",
     "/about",
@@ -12,8 +11,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: [
-    "/((?!.*\\..*|_next).*)",
-    "/studio/:path*"
-  ],
+  matcher: ["/((?!.*\\..*|_next).*)", "/api/cart/:path*", "/studio/:path*"],
 };
