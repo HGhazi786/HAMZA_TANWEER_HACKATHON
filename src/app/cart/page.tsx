@@ -194,7 +194,7 @@ else {
           </Link>
         </div>
         <div className="mrgn border-2 rounded-lg border-brown my-8 py-4 px-10">
-          {isSignedIn && (
+          {isSignedIn ? (
             <button
               className="flex justify-between items-center w-full"
               onClick={() => handleToggle()}
@@ -209,7 +209,7 @@ else {
                 {open ? <AiOutlineUp /> : <AiOutlineDown />}
               </button>
             </button>
-          )}
+          ):(<p className='text-brown text-lg font-roboto'>Sign Up To see your previous order</p>)}
           {open && isSignedIn && (
             <Suspense>
               <History props={open} />
