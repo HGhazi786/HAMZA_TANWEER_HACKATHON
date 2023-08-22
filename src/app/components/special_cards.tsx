@@ -34,16 +34,14 @@ export default function S_cards(props: s_props) {
         fill
         className="rounded-lg -z-10 mr-8"
       /> */}
-      <div className="flex items-center flex-wrap z-50 rounded-lg bg-gradient-to-tr from-orange-200/70 via-orange-100/70 to-brown/70 backdrop-blur-2xl">
-        <div>
-          <Image
-            src={props.picture}
-            alt="Product Picture"
-            width={200}
-            height={200}
-            className="rounded-l-lg mr-8 lg:w-[260px] lg:h-[185px] xl:w-[260px] xl:h-[185px] md:w-full md:h-full"
-          />
-        </div>
+      <div className=" flex items-center flex-wrap rounded-lg bg-gradient-to-tr from-orange-200/70 via-orange-100/70 to-brown/70 backdrop-blur-2xl">
+        <Image
+          src={props.picture}
+          alt="Product Picture"
+          width={200}
+          height={200}
+          className="rounded-l-lg mr-8 lg:w-[260px] lg:h-[185px] xl:w-[260px] xl:h-[185px] md:w-[400px] md:h-[300px] w-[414px] h-[300px]"
+        />
         <div className={`${props.button} py-5`}>
           <h2 className="text-4xl font-semibold b-4 font-festive">
             {props.name}

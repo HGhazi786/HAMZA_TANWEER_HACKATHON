@@ -14,10 +14,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
         className="bg-brown"
       >
         <BackgroundSlider
-          bg1="/hero.jpg"
-          bg2="/hero1.jpg"
-          bg3="/hero2.jpg"
-          bg4="/hero.jpg"
+          bg1="/pro1.jpg"
+          bg2="/pro2.jpg"
+          bg3="/pro3.jpg"
+          bg4="/pro4.jpg"
         />
         <div
           style={{ position: "relative", zIndex: 1 }}

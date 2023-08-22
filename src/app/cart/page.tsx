@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import getStipePromise from "../lib/stripe";
@@ -156,16 +156,25 @@ const handleToggle = () => {
         </div>
       </div>
       <div className="mrgn border-2 rounded-lg border-brown my-8 py-4 px-10">
-        <div className="flex space-x-10 py-4 px-10 justify-between w-full">
-          <h3 className="text-3xl font-roboto font-bold">Previous Purchases</h3>
+        <button
+          className="flex space-x-10 py-4 px-10 justify-between w-full"
+          onClick={() => handleToggle()}
+        >
+          <h3 className="text-3xl font-roboto font-bold text-brown">
+            Previous Purchases
+          </h3>
           <button
             onClick={() => handleToggle()}
             className="text-xl font-bold text-brown"
           >
             {open ? <AiOutlineUp /> : <AiOutlineDown />}
           </button>
-        </div>
-        {open && <History props={open} />}
+        </button>
+        {open && (
+          <Suspense>
+            <History props={open} />
+          </Suspense>
+        )}
       </div>
     </div>
   );
@@ -186,8 +195,11 @@ else {
         </div>
         <div className="mrgn border-2 rounded-lg border-brown my-8 py-4 px-10">
           {isSignedIn && (
-            <button className="flex justify-between items-center w-full">
-              <h3 className="text-3xl font-roboto font-bold">
+            <button
+              className="flex justify-between items-center w-full"
+              onClick={() => handleToggle()}
+            >
+              <h3 className="text-3xl font-roboto font-bold text-brown">
                 Previous Purchases
               </h3>
               <button
@@ -198,7 +210,11 @@ else {
               </button>
             </button>
           )}
-          {open && isSignedIn && <History props={open}/>}
+          {open && isSignedIn && (
+            <Suspense>
+              <History props={open} />
+            </Suspense>
+          )}
         </div>
       </main>
     );
